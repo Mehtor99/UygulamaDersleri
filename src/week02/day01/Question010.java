@@ -8,15 +8,15 @@ public class Question010 {
 	*/
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Basamaklari toplamini yazdirmak istediğiniz sayiyi giriniz: ");
+		System.out.print("Basamaklari toplamini yazdirmak istediğiniz sayiyi giriniz: ");
 		int number = sc.nextInt();
 		sc.close();
-		int digit=0,total=0;
-		while(number!=0){
-			digit =number%10;
-			number =number/10;
+		int digit = 0, total = 0;
+		while (number != 0) {
+			digit = number % 10;
+			number = number / 10;
 			total = total + digit;
 		}
-		System.out.println("Girilen sayinin basasmaklari toplami: "+total);
+		System.out.println("Girilen sayinin basasmaklari toplami: " + total);
 	}
 }
