@@ -39,7 +39,7 @@ public class AsalSayiVerimsiz {
 		
 		long endTime = System.nanoTime();
 		long duration = endTime - startTime;
-		System.out.println("Programin calisma suresi: "+duration+" nanosaniye");
+		System.out.println("Programin calisma suresi: "+duration +" nanosaniye");
 		
 	}
 }
