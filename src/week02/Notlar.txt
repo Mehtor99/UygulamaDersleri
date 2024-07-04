@@ -1,0 +1,109 @@
+
+/////   2.Hafta Ders Notları   /////
+
+----> Programımızsa kullanıcıdan bir veri girişi yapmasını istememiz halinde Scanner sınıfından yararlanmamız gerekecektir.
+      bu işlemi yaparken scanner sınıfının next.nt() , next.Line() ve nextFloat() gibi methodlarından yararlanıyoruz.
+      Scanner ile işimiz bittikten sonra sc.close; diyerek veri girişini kapatmalıyız.
+
+----> if bloğu kullanımı öğrenildi. if bloğunu kullanarak belli koşullar sağlanınca gerçekleşmesi gereken farklı senaryolar
+      sağlanabiliyor.Aynı zamanda else if kullanarak pek çok farklı koşıl eklemek mümkün. Kullanımı;
+           if(mantıksal ifade){
+		   //koşul doğru ise çalışacak kodlar
+		   }
+		   else{
+		   //koşul doğru değil ise çalışacak kodlar
+		   }
+
+----> String bir değişkenden sonra nokta koyularak equalsIgnoreCase methodu çağırılırsa sonrasında girilen String ifade
+      ile büyük küçük harf hassasiyeti olmaksızın eşitlik kıyaslaması yapılabilir . Bu method özellikle kullanıcıdan veri
+       alınması gereken durumlarda programın hata vermemesi için gereklidir ve önemlidir. Kullanım örneği:
+       if(sehir.equalsIgnoreCase("Ankara") ---> şeklinde bir kullanım sehir isimli değişkende tutulan kelimenin "Ankara"
+                                            kelimesine eşit olup olmadığını büyük küçük harf gözetmeden kıyaslar.
+
+----> String bir değişken tanımlarken eğer ## String str1=new String("Deneme");## şeklinde tanımlama yaparsak bu ifade
+      için bellekte yeni bir yer açılır ve aynı şekilde ve aynı metin ile tanımlanan başka bir String ile eşitlikleri == operatörü
+      ile kontrol edilirse sonuç false dönecektir, bunun sebebi == operatörü ile yapılan kontolün referans adreslerinin eşitliği
+      üzerine olmasıdır. Bunun yerine ##str1.equals(str2)## yazılırsa yani equals methodu kullanılırsa yapılan kontrol içerklerin
+      eşitliği üzerine olacak ve true sonucu alınacaktır. new String tanımlanmadığı durumlarda bu kullanıma gerek yoktur.
+
+----> ternary operatörü kullanımı: ## String sonuc=(sayi%2==0)?"Çift":"Tek"; ## örnekteki kullanımda soru işaretinden
+      önce yazılmış koşul true ise ilk kısım false ise ikinci kısım sonuc değişkenine aktarılır. else if kadar kullanışlı
+      ve kolay okunur değildir.
+
+----> switch case operatörü kullanımı: aynı if else de olduğu gibi birbirinden farklı durumlarda gerçekleşecek farklı
+      senaryoları oluşturmamızı sağlar ancak bunu mantıksal ifade üzerinden değil switchde yazan değerin diğer case'lerde
+      yazan değere eşitliğine göre yapar. yazımı şu şekildedir;
+                 switch(ifade){
+      			case sabitdeger:
+      				//buraya çalışacak kodlar gelecek.
+      			default:
+      				//buraya diğer durumlara uymayan kodlar gelecek.
+      			}
+      bu kullanıma ek olarak ;
+      			String ay = switch (month) {
+                			case 1 -> "Ocak";
+                			case 2 -> "Şubat";
+                            default -> "Yanlış ay girdiniz.";       şeklindeki kullanımı da yazım açısından daha kolaydır.
+
+----> yine case içerisinde kullanılan yield şeklindeki ifade ile elde edilen sonucu switch in bağlandığı değişkene aktarabiliriz.
+
+----> Programımızda hata verdirmemiz gereken bir durum oluşursa bunu throw new expection keyword'ü ile yapabiliriz.
+
+----> toLowerCase methodu uygulandığı String ifadedeki tüm karakterleri küçük harfe dönüştürür,toUpperCase ise tersini yapar.
+
+----> BigDecimal sınıfı kullanılarak işlem yapma: Ondalıklı sayılarla işlem yaparken float ve double türünde yapılan
+      hesaplamalarda öngörülemeyen minik hatalar oluşuyor. Ancak yüksek hassasiyet gereken duurmlarda bunlar kullanılamıyor
+      ve BigDecimal sınıfı kullanılarak işlemler hatasız bir şekilde yapılabiliyor.
+      BigDecimal sınıfında toplama için add, çarpma için multiply, çıkarma için subtract, bölme için divide metodları kullanılabilir.;
+
+----> Math. kütüphanesinden yararlanarak PI, sqrt gibi pek çok matematiksel işlem yapılabiliyor. henüz kütüphane kullanımlarına
+      çok hakim değilim ancak kodlamayı fazlasıyla kolaylaştırıyor.
+
+---->Integer.MAX_VALUE methodu ile int bir değişkenin alabileceği max değer çağırılabilir.
+     Integer.MİN_VALUE methodu ile int bir değişkenin alabileceği min değer çağırılabilir.
+
+----> Programımızın çalışma süresini hesaplamak için long olarak tanımladığımız 2 adet değişkeni kodun başına ve sonuna
+      koyarız ve system.nanoTime methodunu kullanarak geçen süreyi nanosaniye cinsinden hesaplayabiliriz.
+
+----> # while #
+     while iken demektir ve while ın içine yazılan koşul true olduğu sürece while scope'undaki kodlar tekrar tekrar çalışacaktır.
+     sık kullanılan bir döngüdür.  yazımı;
+     while(koşul){
+     //koşul sağlandığı sürece çalışacak kodlar.
+     }                                                     şeklindedir.
+
+----> string metdodlarından olan .charAt ile parametre olarak verilen index değerindeki karakter alınabilir.
+
+----> Do while bloğu while bloğu ile fazlasıyla benzerdir ancak en belirgin farkı ; koşul sağlanmasa bie en az 1 kere çalışır.
+      while'dan sonra ; koymak unutulmamalıdır. Yazımı aşağıdaki gibidir;
+            do{
+      			//yapılacak işlemler
+      		}while(koşul);
+
+----> For döngüsünü de kod yazarken sıkça kullanırız matığı while benzer ancak yazım şekilleri farklıdır. Duruma göre
+      kullanımı daha elverişli olacak olan tercih edilebilir. yazımı:
+      for( başlangıç değeri ; koşul ; değişim(artış veya azalış){
+      //Döngüde kalındığı taktirde çalışacak kodlar
+      }
+
+
+      iki adet değişken ve iki farklı koşul tek bir for döngüsünde ## for (i = 0,j=i+2; i < 5 && j>1; i++,j=j+2) ##
+       şeklinde kullanılabilir ancak kod okunurluğunu azalttığı için pek terci edilen bir durum değildir.
+
+---->StringMethods string tipinde kullanabildiğimiz ve pek çok alanda işimizi kolaylaştıran methodlardır.
+     String value diye bir değişken oluşturduğumuzu düşünelim:
+     value.charAt(3)        --> 3. index'teki karakteri tutar. 0,1,2,3
+     value.trim()           --> string ifadede bulunan whitespaceleri siler.
+     value.length()         --> string ifadenin kaç karakterden oluştuğunu sayısal değer olarak tutar.
+     value.indexOf('b')     --> b harfinin ilk görüldüğü indexi verir.
+     value.lastIndexOf('a') --> b harfinin son görüldüğü indexi verir.
+     value.substring(4)     --> string ifadenin 4.indeksinden sonrasını tutar.
+     value.substring(0,5)   -->0.indexten 5.index'e kadar olan kısmı tutar.
+     value.equals(value2)   --> iki string ifade birbirine eşit mi kotrol eder ve boolean sonucu tutar.
+
+     -->bu konuda da aynı değeri içeriği barındıran farklı string ifadelerin referans adresleri farklı olacağından == operatörü
+     ile yapılan karşılaştırmalar false değerini alırken, equals methodu ile yapılan karşılaştırmalar içerik karşılaştırdığı
+      için true değer dönecektir.
+
+----> try catch bloğu yüzeysel olarak anlatıldı ancak şu şekilde düşünülebilir.
+      hata alınacağı zaman kullanabiliriz try bloğunda hata olursa catch bloğu çalışacaktır.
