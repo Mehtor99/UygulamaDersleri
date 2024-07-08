@@ -17,7 +17,7 @@ public class StringMethods {
 		System.out.println(value == " Merhaba Dunya ");
 		// value degiskeninin degeri ile ham (raw) " Merhaba Dunya " degerini karsilastiriyor.
 		// Farkli bir string degiskeni icerisinde olmayan " Merhaba Dunya " text'i heap'te herhangi bir nesneye karsilik gelmiyor.
-		// doyisiyla value degiskeninin degerini aldığı adres, aslında " Merhaba Dunya " yazısının ta kendisi.
+		// dolayisiyla value degiskeninin degerini aldığı adres, aslında " Merhaba Dunya " yazısının ta kendisi.
 		// o yüzden true döner.
 		
 		System.out.println(value.trim() == value2);   //referansına göre bakıyor.

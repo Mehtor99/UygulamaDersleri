@@ -1,12 +1,12 @@
 
 /////   2.Hafta Ders Notları   /////
 
-----> Programımızsa kullanıcıdan bir veri girişi yapmasını istememiz halinde Scanner sınıfından yararlanmamız gerekecektir.
+----> Programımızda kullanıcıdan bir veri girişi yapmasını istememiz halinde Scanner sınıfından yararlanmamız gerekecektir.
       bu işlemi yaparken scanner sınıfının next.nt() , next.Line() ve nextFloat() gibi methodlarından yararlanıyoruz.
       Scanner ile işimiz bittikten sonra sc.close; diyerek veri girişini kapatmalıyız.
 
 ----> if bloğu kullanımı öğrenildi. if bloğunu kullanarak belli koşullar sağlanınca gerçekleşmesi gereken farklı senaryolar
-      sağlanabiliyor.Aynı zamanda else if kullanarak pek çok farklı koşıl eklemek mümkün. Kullanımı;
+      sağlanabiliyor.Aynı zamanda else if kullanarak pek çok farklı koşul eklemek mümkün. Kullanımı;
            if(mantıksal ifade){
 		   //koşul doğru ise çalışacak kodlar
 		   }
@@ -93,7 +93,7 @@
 ---->StringMethods string tipinde kullanabildiğimiz ve pek çok alanda işimizi kolaylaştıran methodlardır.
      String value diye bir değişken oluşturduğumuzu düşünelim:
      value.charAt(3)        --> 3. index'teki karakteri tutar. 0,1,2,3
-     value.trim()           --> string ifadede bulunan whitespaceleri siler.
+     value.trim()           --> string ifadenin başında ve sonunda bulunan whitespaceleri siler.
      value.length()         --> string ifadenin kaç karakterden oluştuğunu sayısal değer olarak tutar.
      value.indexOf('b')     --> b harfinin ilk görüldüğü indexi verir.
      value.lastIndexOf('a') --> b harfinin son görüldüğü indexi verir.
