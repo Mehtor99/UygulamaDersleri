@@ -15,35 +15,41 @@ Main'de kac sayi alacagini ogren. Gelecek sayi miktarina gore kullanacagin metod
 public class Question002 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Kac sayiyi toplamak istersiniz(2 || 3): ");
-		int toplanacakSayiAdedi = sc.nextInt();
-		if (toplanacakSayiAdedi == 2) {
-			System.out.println(sayiToplama());
-		}
-		else if (toplanacakSayiAdedi == 3) {
-			System.out.println(" 3 Adet sayi giriniz: ");
-			System.out.println(sayiToplama(sc.nextInt(), sc.nextInt(), sc.nextInt()));
+		System.out.println("How many number will you enter(2/3): ");
+		int selecion = sc.nextInt();
 		
-		}
-		else {
-			System.out.println("Gecersiz giris!!!");
+		switch (selecion){
+			case 2:{
+			sumNumbers();
+			}
+			case 3:{
+				System.out.println("Please enter the first number:");
+				int num1 = sc.nextInt();
+				System.out.println("Please enter the second number:");
+				int num2 = sc.nextInt();
+				System.out.println("Please enter the third number:");
+				int num3 = sc.nextInt();
+				int total = sumNumbers(num1,num2,num3);
+				System.out.println("Total: "+total);
+			}
+			default:{
+				System.out.println("Please select a valid option!");
+				break;
+			}
 		}
 		
-		
-			
-		}
-	public static int sayiToplama(){
-		Scanner sc =new Scanner(System.in);
-		System.out.println("ilk sayiyi giriniz: ");
-		int num1 = sc.nextInt();
-		System.out.println("ilk sayiyi giriniz: ");
-		int num2 = sc.nextInt();
-		int total = num1 + num2;
-		return total;
 	}
 	
-	public static int sayiToplama(int sayi1, int sayi2,int sayi3){
-		int total = sayi1+sayi2+sayi3;
+	public static void sumNumbers(){
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please enter the first number: ");
+		int num1 = sc.nextInt();
+		System.out.println("Please enter the second number: ");
+		int num2 = sc.nextInt();
+		System.out.println("total = "+(num1+num2));
+	}
+	public static int sumNumbers(int num1,int num2,int num3){
+		int total = num1 + num2 + num3;
 		return total;
 	}
 	

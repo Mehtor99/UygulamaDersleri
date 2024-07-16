@@ -5,24 +5,21 @@ package week03.day2;
 
 public class Question003 {
 	public static void main(String[] args) {
-		int [] intArr1 = new int[]{120, 130, 125, -256, 16, 1300, 1258, 81, 14};
+		int [] numberArr = {120,130,125, -256, 16, 1300, 1258, 81, 14};
 		
 		int max = Integer.MIN_VALUE;
 		int secondMax = Integer.MIN_VALUE;
 		
-		for (int i = 0; i < intArr1.length; i++) {
-			if (intArr1[i]>max){
-				max = intArr1[i];
+		for (int i = 0; i < numberArr.length ; i++) {
+			if (numberArr[i]>max){
+				max = numberArr[i];
 			}
 		}
-		
-		for (int i = 0; i < intArr1.length; i++) {
-			if (intArr1[i]<max && intArr1[i]>secondMax){
-				secondMax = intArr1[i];
+		for (int i =0; i<numberArr.length;i++){
+			if (numberArr[i]<max && secondMax<numberArr[i]){
+				secondMax = numberArr[i];
 			}
 		}
-		System.out.println("Second max number: "+secondMax);
-		
-		
+		System.out.println("second max: "+ secondMax);
 	}
 }

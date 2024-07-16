@@ -5,16 +5,15 @@ package week03.day2;
  */
 public class Question004 {
 	public static void main(String[] args) {
-		int[] intArray = new int[]{2, -256, 2, 1258, 2, 2};
+		int[] arr1 ={2, -256, 2, 1258, 2,2};
+		boolean isItRepeating = false;
 		
-		boolean isRepeating = false;
-		for (int i = 0; i <intArray.length-1 ; i++) {
-			if (intArray[i]==2 && intArray[i+1]==2){
-				isRepeating = true;
+		for (int i = 0; i < arr1.length-1 ; i++) {
+			if (arr1[i]==arr1[i+1] && arr1[i]==2){
+				isItRepeating = true;
 				break;
 			}
 		}
-		System.out.println(isRepeating);
-		
+		System.out.println(isItRepeating);
 	}
 }

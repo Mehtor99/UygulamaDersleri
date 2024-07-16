@@ -5,18 +5,16 @@ int[] array = { 1, 5, -4, 3 };
  */
 public class Question004 {
 	public static void main(String[] args) {
-		int[] array = {1,5,-4,-3};
-		System.out.println("Min Gap: "+smallestGap(array));
+		int[] array= {1,5,-4,3,2};
+		System.out.println(smallestGap(array));
+		
 	}
-	
-	private static int smallestGap(int[] arr) {
+	public static int smallestGap(int[] numbers){
 		int minGap = Integer.MAX_VALUE;
-		int gap;
-		for(int i=0;i<arr.length;i++){
-			for (int j = i+1; j < arr.length ; j++) {
-				gap =Math.abs(arr[i]-arr[j]);
-				if (gap<minGap){
-					minGap =gap;
+		for (int i = 0;i< numbers.length-1;i++){
+			for (int j = i+1; j < numbers.length ; j++) {
+				if (Math.abs(numbers[i]-numbers[j])<minGap){
+					minGap = Math.abs(numbers[i]-numbers[j]);
 				}
 			}
 		}

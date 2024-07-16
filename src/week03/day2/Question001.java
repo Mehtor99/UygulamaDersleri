@@ -7,15 +7,22 @@ import java.util.Scanner;
  */
 public class Question001 {
 	public static void main(String[] args) {
-		String[] ulkeler = new String[]{"Turkiye", "Japonya", "Mogolistan", "Amerika", "Rusya", "Cin"};
+		String[] ulkeler = {"Türkiye", "Japonya", "Moğolistan", "Amerika", "Rusya", "Çin"};
+		boolean isCountryPresent = false;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Aramak istediginiz ulkeyi giriniz: ");
-		String arananUlke = sc.nextLine();
+		System.out.println("Bir ülke giriniz: ");
+		String enteredCountry = sc.nextLine();
 		
-		for (int i = 0; i < ulkeler.length; i++) {
-			if(ulkeler[i].equalsIgnoreCase(arananUlke)){
-				System.out.println("Aranan ulke bulunuyor.");
+		for (String item : ulkeler) {
+			if (item.equalsIgnoreCase(enteredCountry)) {
+				isCountryPresent = true;
 			}
+		}
+		if (isCountryPresent) {
+			System.out.println("ülke mevcut");
+		}
+		else {
+			System.out.println("ülke mevcut değil");
 		}
 	}
 }

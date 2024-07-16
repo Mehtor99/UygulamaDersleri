@@ -6,24 +6,24 @@ package week03.day2;
  */
 public class Question006 {
 	public static void main(String[] args) {
-	int[] arr1 = new int[]{1,4,5,6,1,1,4,8};
-	int oneCount = 0;
+	int[] numArr = new int[]{1,4,5,6,1,1,4,8};
 	int fourCount =0;
-	boolean isOneCountMore;
+	int oneCount = 0;
 		
-		for (int i = 0; i < arr1.length; i++) {
-			if (arr1[i] == 1){
-				oneCount++;
-			}
-			else if (arr1[i] == 4) {
+		for (int temp:numArr){
+			if (temp == 4){
 				fourCount++;
 			}
+			else if (temp==1) {
+				oneCount++;
+			}
 		}
-		System.out.println("1 adedi: "+oneCount);
-		System.out.println("4 adedi: "+fourCount);
 		
-	
-		isOneCountMore=oneCount>fourCount;
-		System.out.println(isOneCountMore);
+		if (oneCount>fourCount){
+			System.out.println(true);
+		}else {
+			System.out.println(false);
+		}
+		
 	}
 }

@@ -7,18 +7,17 @@ Dizinin her bir elemanı için;
  */
 public class Question005 {
 	public static void main(String[] args) {
-		int[] arr1 = new int[]{0, 120, 5, 85, -256, 16, 1258, 81, 14};
+		int [] numberArr = new int[]{0, 120, 5, 85, -256, 16, 1258, 81, 14};
 		int total =0;
-		for (int num : arr1) {
-			total += num;
-			
-			if(num%2==0){
-				System.out.println(num + " is even");
+		
+		for (int i = 0; i < numberArr.length ; i++) {
+			if (numberArr[i]%2==0){
+				System.out.println(numberArr[i]+": number is even");
 			}else{
-				System.out.println((num+" is odd"));
+				System.out.println(numberArr[i]+": number is odd");
 			}
-			
+			total += numberArr[i];
 		}
-		System.out.println("total: "+total);
+		System.out.println(total);
 	}
 }
