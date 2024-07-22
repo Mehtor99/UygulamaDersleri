@@ -19,7 +19,7 @@ doðumTarihi;
 18 yasindan kucukler kayýt olamasýn.
  */
 public class Kullanici {
-	private  static int kullaniciCount =0;
+	private static int kullaniciCount = 0;
 	private int id;
 	private String isim;
 	private String soyisim;
@@ -32,7 +32,7 @@ public class Kullanici {
 	private LocalDate dogumTarihi;
 	
 	
-	public Kullanici() {
+	public Kullanici(){
 		this.kullaniciCount++;
 		this.id = kullaniciCount;
 		this.kayitTarihi = LocalDate.now();
@@ -55,7 +55,7 @@ public class Kullanici {
 	}
 	
 	public void setSifre(String sifre) {
-		sifre = sifre;
+		this.sifre = sifre;
 	}
 	
 	public void setKullaniciAdi(String kullaniciAdi) {
@@ -70,16 +70,16 @@ public class Kullanici {
 		this.dogumTarihi = dogumTarihi;
 	}
 	
+	public static int getKullaniciCount() {
+		return kullaniciCount;
+	}
+	
 	public int getId() {
 		return id;
 	}
 	
 	public String getIsim() {
 		return isim;
-	}
-	
-	public static int getKullaniciCount() {
-		return kullaniciCount;
 	}
 	
 	public String getSoyisim() {
@@ -116,6 +116,17 @@ public class Kullanici {
 	
 	@Override
 	public String toString() {
-		return "Kullanici{" + "id=" + getId() + ", isim='" + getIsim() + '\'' + ", soyisim='" + getSoyisim() + '\'' + ", email='" + getEmail() + '\'' + ", telNo='" + getTelNo() + '\'' + ", sifre='" + getSifre() + '\'' + ", kullaniciAdi='" + getKullaniciAdi() + '\'' + ", tcKimlik='" + getTcKimlik() + '\'' + ", kayitTarihi=" + getKayitTarihi() + ", dogumTarihi=" + getDogumTarihi() + '}';
+		return "Kullanici{" +
+				"id=" + id +
+				", isim='" + isim + '\'' +
+				", soyisim='" + soyisim + '\'' +
+				", email='" + email + '\'' +
+				", telNo='" + telNo + '\'' +
+				", sifre='" + sifre + '\'' +
+				", kullaniciAdi='" + kullaniciAdi + '\'' +
+				", tcKimlik='" + tcKimlik + '\'' +
+				", kayitTarihi=" + kayitTarihi +
+				", dogumTarihi=" + dogumTarihi +
+				'}';
 	}
 }

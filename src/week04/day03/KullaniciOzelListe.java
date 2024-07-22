@@ -11,6 +11,10 @@ public class KullaniciOzelListe {
 	private Kullanici[] kullaniciDizisi;
 	private int boyut;
 	
+	KullaniciOzelListe(){
+		kullaniciDizisi = new Kullanici[0];
+	}
+	
 	public Kullanici[] getKullaniciDizisi() {
 		return kullaniciDizisi;
 	}
@@ -22,11 +26,6 @@ public class KullaniciOzelListe {
 	// 0,1,2,3
 	public Kullanici add(Kullanici kullanici){
 		Kullanici[] tmp;
-		if(kullaniciDizisi == null){
-			kullaniciDizisi = new Kullanici[1];
-			kullaniciDizisi[0] = kullanici;
-			this.boyut = 1;
-		} else {
 			tmp = new Kullanici[this.boyut+1]; // sayi dizimizin onceki size'ýnýn bir fazlasi olacak. Cunku yeni "Bir" elaman
 			// ekliyoruz.
 			for (int i = 0; i<boyut; i++){
@@ -35,9 +34,10 @@ public class KullaniciOzelListe {
 			tmp[this.boyut] = kullanici;
 			kullaniciDizisi = tmp;
 			this.boyut++;
-		}
 		return kullaniciDizisi[boyut-1];
-	}
+		}
+		
+	
 	
 	/*
 	1.2 - OzelListe sýnýfýnda remove isimli bir metot yazalim.
@@ -115,5 +115,9 @@ public class KullaniciOzelListe {
 		for (int i = indexesToBeRemoved.length-1; i>=0;i--){
 			remove(indexesToBeRemoved[i]);
 		}
+	}
+	
+	public Kullanici replace(int index, Kullanici kullanici) {
+		return kullaniciDizisi[index] = kullanici;
 	}
 }
