@@ -1,5 +1,6 @@
 package week04.day03;
 
+
 class KullaniciDB {     //default class yaptýk.baþka packageden eriþilemesin diye
 	
 	static KullaniciOzelListe kullaniciOzelListe = new KullaniciOzelListe();
