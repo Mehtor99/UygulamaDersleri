@@ -2,19 +2,20 @@ package week06.day01.interfaceOrnekler.Question01;
 
 public class Muhendis extends Calisan implements SahaCalismasiYapabilir,MaasaGoreUnvanAlabilir{
 	
-	private String patates;
 	
 	public Muhendis(String isim, String soyisim,double maas) {
-		this.isim = isim;
+		this.setIsim(isim);
 		this.setSoyisim(soyisim);
 		this.setMaas(maas);
-		this.patates = patates;
 		setUnvan(maas);
 	}
 	
+	
+	
 	@Override
-	public void sahaCalismasiYap() {
+	public boolean sahaCalismasiYap() {
 		System.out.println("Muhendis saha calismasi yurutuyor.");
+		return true;
 	}
 	
 	
@@ -39,10 +40,12 @@ public class Muhendis extends Calisan implements SahaCalismasiYapabilir,MaasaGor
 	}
 	
 	@Override
-	public String toString(){
-		return this.getClass().getSuperclass().getSimpleName()+"{"+"Muhendis{"+
-				super.toStringTemplate()+
-				", patates='"+ patates + '\'' +
-				'}'+"}";
+	public String toString() {
+		return this.getClass().getSuperclass().getSimpleName()
+				+"Muhendis{" +
+				"isim='" + getIsim() + '\'' +
+				", maas=" + getMaas() +
+				", soyIsim='" + getSoyisim() + '\'' +
+				", unvan='" + getUnvan() + '\'' + '}';
 	}
 }

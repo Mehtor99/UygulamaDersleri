@@ -3,7 +3,7 @@ package week06.day01.interfaceOrnekler.Question01;
 public class OfisCalisani extends Calisan implements MaasaGoreUnvanAlabilir{
 	
 	public OfisCalisani(String isim, String soyisim,double maas) {
-		this.isim = isim;
+		this.setIsim(isim);
 		this.setSoyisim(soyisim);
 		this.setMaas(maas);
 		setUnvan(maas);
