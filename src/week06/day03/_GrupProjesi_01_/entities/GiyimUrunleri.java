@@ -1,4 +1,8 @@
-package week06.day03._GrupProjesi_01_;
+package week06.day03._GrupProjesi_01_.entities;
+
+import week06.day03._GrupProjesi_01_.utilities.enums.EBeden;
+import week06.day03._GrupProjesi_01_.utilities.enums.EKategori;
+import week06.day03._GrupProjesi_01_.utilities.enums.ERenk;
 
 public class GiyimUrunleri extends Urun{
 	

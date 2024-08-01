@@ -1,7 +1,8 @@
-package week06.day03._GrupProjesi_01_;
+package week06.day03._GrupProjesi_01_.entities;
+
+import week06.day03._GrupProjesi_01_.utilities.enums.EKategori;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Urun {
 	private static Integer idCount=0;
@@ -12,7 +13,7 @@ public class Urun {
 	private EKategori kategori;
 	private Integer adet;
 	
-	static ArrayList<Urun> urunArrayList = new ArrayList<>();
+	public static ArrayList<Urun> urunArrayList = new ArrayList<>();
 	
 	public Urun(String ad, Double fiyat, String aciklama, EKategori kategori,Integer adet) {
 		this.ad = ad;
@@ -73,8 +74,7 @@ public class Urun {
 	public String ozetBilgileri(){
 		return "  id : "+getUrunID()+ '\''+
 				", ad : " + getAd()+
-				", fiyat : '" + getFiyat() + '\''+
-				", adet : '" + getAdet() + '\'';
+				", fiyat : '" + getFiyat() + '\'';
 	}
 	
 	@Override
