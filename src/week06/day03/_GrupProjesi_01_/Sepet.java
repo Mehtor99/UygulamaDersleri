@@ -1,22 +1,25 @@
 package week06.day03._GrupProjesi_01_;
 
 import week06.day03._GrupProjesi_01_.entities.Urun;
+import week06.day03._GrupProjesi_01_.kullaniciIslemleri.entities.Kullanici;
 
 import java.util.ArrayList;
 
 public class Sepet {
-	private static Integer sepetIdCount =0;
+	private static Integer sepetIdCount=0;
 	private Integer sepetId;
-	ArrayList<Urun> sepetList = new ArrayList<>();
+	private Integer kullaniciId = -1;
+	ArrayList<Urun> sepetList;
 	ArrayList<Urun>uniqueUrunler;
 	ArrayList<Integer>adet;
 	
 	public Sepet() {
-		this.sepetList = new ArrayList();
-		this.sepetId = ++sepetIdCount;
-		this.adet =new ArrayList<>();
-		this.uniqueUrunler =new ArrayList<>();
+		this.sepetList = new ArrayList<>();
+		this.uniqueUrunler=new ArrayList<>();
+		this.adet=new ArrayList<>();
+		this.sepetId=++sepetIdCount;
 	}
+	
 	
 	public ArrayList<Urun> sepettenUrunCikart(Urun urun){
 		if(sepetList.remove(urun)) {
@@ -33,10 +36,16 @@ public class Sepet {
 		}
 		return sepetList;
 	}
-	
 	public ArrayList<Urun> sepeteUrunEkle(Urun urun){
 		sepetList.add(urun);
 		return sepetList;
+	}
+	public void sepetiOnayla(){
+		for (Urun urun:sepetList){
+			urun.setAdet(urun.getAdet() -1);
+		}
+		sepetList.clear();
+		System.out.println("Sepet onaylandi. Satin alim gerceklesti.");
 	}
 	
 	public ArrayList<Urun> sepettekiUrunleriListele() {
@@ -58,18 +67,9 @@ public class Sepet {
 			Urun urun = uniqueUrunler.get(i);
 			int urunlerAdet = adet.get(i);
 			double fiyat = urun.getFiyat();
-			System.out.println("urunAd : " + urun.getAd() + " urun adet : " + urunlerAdet + " birim fiyat : " + fiyat);
-			toplam += urun.getFiyat() * urunlerAdet;
+			System.out.println("Urun ID'si: " + urun.getUrunID() + "\t|\t" + " Urun Adi: " + urun.getAd() + "\t|\t" + " Urun Adedi: " + urunlerAdet + "\t|\t" + " Urun Birim Fiyat: " + fiyat+"\t|\t" +"Urun Toplam Fiyat : "+(urunlerAdet*fiyat));
 		}
 		System.out.println(" Toplam fiyat : " + toplam);
 		return sepetList;
 	}
-	public void sepetiOnayla(){
-		for (Urun urun : sepetList){
-			urun.setAdet(urun.getAdet()-1);
-		}
-		sepetList.clear();
-		System.out.println("Sepet onaylandi satin alim gerceklesti.");
-	}
-	
 }

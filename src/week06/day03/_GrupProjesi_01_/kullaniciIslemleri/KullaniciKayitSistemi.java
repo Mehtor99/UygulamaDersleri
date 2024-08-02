@@ -1,5 +1,6 @@
 package week06.day03._GrupProjesi_01_.kullaniciIslemleri;
 
+import week06.day03._GrupProjesi_01_.Runner;
 import week06.day03._GrupProjesi_01_.kullaniciIslemleri.databases.KullaniciDB;
 import week06.day03._GrupProjesi_01_.kullaniciIslemleri.databases.MailDB;
 import week06.day03._GrupProjesi_01_.kullaniciIslemleri.entities.Kullanici;
@@ -15,10 +16,10 @@ public class KullaniciKayitSistemi {
 	static Scanner scanner = new Scanner(System.in);
 	static KullaniciDB kullaniciDB = new KullaniciDB();
 	static MailDB mailDB = new MailDB();
-	
-	public static void main(String[] args) {
-		menu();
-	}
+
+    /*public static void main(String[] args) {
+        menu();
+    }*/
 	
 	public static void menu() {
 		int secim = -1;
@@ -33,9 +34,11 @@ public class KullaniciKayitSistemi {
 			System.out.print("Lutfen bir secim yapiniz : ");
 			try {
 				secim = scanner.nextInt();
-			} catch (Exception e){
+			}
+			catch (Exception e) {
 				System.out.println("Gecerli bir secim yapiniz.");
-			} finally {
+			}
+			finally {
 				scanner.nextLine();
 			}
 			menuFunctions(secim);
@@ -46,12 +49,19 @@ public class KullaniciKayitSistemi {
 		switch (secim) {
 			case 1: {
 				Kullanici kullanici = kullaniciKaydi();
+				Runner.aktifKullanici=kullanici;
+				Runner.menu();
 				break;
 			}
 			case 2: {
 				Kullanici kullanici = girisYap();
-				if (kullanici != null){
-					kullaniciArayuzu(kullanici);
+				if (kullanici!=null){
+					Runner.aktifKullanici=kullanici;
+					kullaniciSecimMenusu(kullanici);
+				}
+				else {
+					System.out.println("Giriş iptal edildi. Sepet menüsüne geri döndürülüyor");
+					Runner.menu();
 				}
 				break;
 			}
@@ -74,6 +84,42 @@ public class KullaniciKayitSistemi {
 		}
 	}
 	
+	private static void kullaniciSecimMenusu(Kullanici kullanici) {
+		int secim = -1;
+		do {
+			System.out.println("### KULLANICI MENÜSÜ ###");
+			System.out.println("1- Kullanıcı Arayüzünü Görüntüle");
+			System.out.println("2- Sepetteki Ürünleri Görüntüle");
+			System.out.println("0- Sepet Menüsüne Geri Dön");
+			System.out.print("Lütfen bir seçim yapınız: ");
+			try {
+				secim = scanner.nextInt();
+			} catch (Exception e) {
+				System.out.println("Geçerli bir seçim yapınız.");
+			} finally {
+				scanner.nextLine();
+			}
+			switch (secim) {
+				case 1: {
+					kullaniciArayuzu(kullanici);
+					break;
+				}
+				case 2: {
+					Runner.sepet.sepettekiUrunleriListele();
+					break;
+				}
+				case 0: {
+					Runner.menu();
+					return;
+				}
+				default: {
+					System.out.println("Lütfen geçerli bir seçim yapınız!");
+					break;
+				}
+			}
+		} while (secim != 0);
+	}
+	
 	private static void kullaniciArayuzu(Kullanici kullanici) {
 		int secim = -1;
 		do {
@@ -87,12 +133,14 @@ public class KullaniciKayitSistemi {
 			System.out.print("Lutfen bir secim yapiniz : ");
 			try {
 				secim = scanner.nextInt();
-			} catch (Exception e){
+			}
+			catch (Exception e) {
 				System.out.println("Gecerli bir secim yapiniz.");
-			} finally {
+			}
+			finally {
 				scanner.nextLine();
 			}
-			secim = userMenuFunctions(secim,kullanici);
+			secim = userMenuFunctions(secim, kullanici);
 		} while (secim != 0);
 		
 	}
@@ -116,13 +164,13 @@ public class KullaniciKayitSistemi {
 				break;
 			}
 			case 9: {
-				if (sifreDegistir(kullanici)){
+				if (sifreDegistir(kullanici)) {
 					System.out.println("Sifrenizi basariyla degistirdiniz. Lutfen tekrar giris yapiniz... ");
 					return 0;
 				}
 				break;
 			}
-			case 0:{
+			case 0: {
 				System.out.println("Ana Menuye Donuluyor...");
 				break;
 			}
@@ -130,45 +178,49 @@ public class KullaniciKayitSistemi {
 		return secim;
 	}
 	
-	private static void emailArayuzu(Kullanici kullanici){
+	private static void emailArayuzu(Kullanici kullanici) {
 		int secim = -1;
 		do {
 			System.out.println("### E-MAIL ARAYUZU ###");
 			System.out.println("1- Yeni mail");
-			System.out.println("2- Gelen Kutusu ");
-			System.out.println("3- Giden Kutusu");
-			System.out.println("0- Kullanici Arayuzune don.");
+			System.out.println("2- Gelen mailler");
+			System.out.println("3- Gonderilen mailler");
+			System.out.println("0- Kullanici menusune don");
 			System.out.print("Lutfen bir secim yapiniz : ");
 			try {
 				secim = scanner.nextInt();
-			} catch (Exception e){
+			}
+			catch (Exception e) {
 				System.out.println("Gecerli bir secim yapiniz.");
-			} finally {
+			}
+			finally {
 				scanner.nextLine();
 			}
-			secim = mailMenuFunctions(secim,kullanici);
+			secim = emailMenuFunctions(secim, kullanici);
 		} while (secim != 0);
+		
 	}
 	
-	private static int mailMenuFunctions(int secim, Kullanici kullanici) {
-		switch (secim){
-			case 1:{
-				//yeni mail
+	private static int emailMenuFunctions(int secim, Kullanici kullanici) {
+		switch (secim) {
+			case 1: {
+				//yeniMail
 				yeniMail(kullanici);
 				break;
 			}
-			case 2:{
+			case 2: {
 				//gelenMailler
 				gelenMailler(kullanici);
 				break;
 			}
-			case 3:{
-				//gonderilenMailler
+			case 3: {
+				//gidenMailler
 				gidenMailler(kullanici);
 				break;
 			}
-			case 0:{
-				System.out.println("Kullanici Arayuzune Donuluyor...");
+			
+			case 0: {
+				System.out.println("Kullanici Menusune Donuluyor...");
 				break;
 			}
 		}
@@ -177,11 +229,12 @@ public class KullaniciKayitSistemi {
 	
 	private static List<Mail> gidenMailler(Kullanici kullanici) {
 		List<Mail> mailList = mailDB.findSentByKullanici(kullanici);
-		if (mailList.isEmpty()){
-			System.out.println("Goruntulenecek bir mail bulunadadi.");
+		if (mailList.isEmpty()) {
+			System.out.println("Goruntulenecek hicbir mail bulunmamaktadir.");
 			return null;
-		}else{
-			System.out.println("\n"+kullanici.getKullaniciAdi()+" kullanicisi tarafindan gonderilen mailler: ");
+		}
+		else {
+			System.out.println(kullanici.getKullaniciAdi() + " kullanicisi tarafindan gonderilen mailler ; ");
 			mailList.forEach(System.out::println);
 			return mailList;
 		}
@@ -189,47 +242,52 @@ public class KullaniciKayitSistemi {
 	
 	private static List<Mail> gelenMailler(Kullanici kullanici) {
 		List<Mail> mailList = mailDB.findReceivedByKullanici(kullanici);
-		if (mailList.isEmpty()){
-			System.out.println("Goruntulenecek hicbir mail bulunmamaktadır.");
+		if (mailList.isEmpty()) {
+			System.out.println("Goruntulenecek hicbir mail bulunmamaktadir.");
 			return null;
-		}else{
-			System.out.println(kullanici.getKullaniciAdi() + " kullanicisina gelen mailler: ");
+		}
+		else {
+			System.out.println(kullanici.getKullaniciAdi() + " kullanicisina gelen mailler ; ");
 			mailList.forEach(System.out::println);
 			return mailList;
 		}
+		
 	}
 	
 	private static Mail yeniMail(Kullanici kullanici) {
 		Mail mail;
-		System.out.println(" Alicinin mail adresini giriniz: ");
+		System.out.print("Maili hangi mail adresine gondermek istiyorsunuz? : ");
 		String aliciMail = scanner.nextLine();
 		if (kullaniciDB.existsByEmail(aliciMail)) {
 			Kullanici aliciKullanici = kullaniciDB.findByEmail(aliciMail);
-			if (aliciKullanici !=null){
+			if (aliciKullanici != null) {
 				mail = new Mail();
 				mail.setGonderici(kullanici);
 				mail.setAlici(aliciKullanici);
-				System.out.println("Mailiniz  icin bir baslik giriniz: ");
+				System.out.print("Mailiniz icin bir baslik giriniz : ");
 				mail.setBaslik(scanner.nextLine());
-				System.out.println("Mail icerigini giriniz: ");
+				System.out.print("Mail icerigini giriniz : ");
 				mail.setIcerik(scanner.nextLine());
 				mailDB.save(mail);
-				System.out.println("Mail basariyla gonderildi");
-				//                mailDB.findAll().forEach(System.out::println);
+				System.out.println("Mail basariyla gonderildi...");
+//                mailDB.findAll().forEach(System.out::println);
 //                for (Mail mail1 : mailDB.findAll()){
 //                    System.out.println(mail1); -> mailDB.findAll().forEach(System.out::println)'a alternatiftir.
 //                }
 				return mail;
-			}else{
-				System.out.println("Bir sorun ile karsilasildi.");
+			}
+			else {
+				System.out.println("Bir sorun ile karsilasildi...");
 				return null;
 			}
-		}else {
-			System.out.println("Girdiginiz mail kullanilmamaktadir");
+		}
+		else {
+			System.out.println("Girdiginiz mail kullanilmamaktadir.");
 			return null;
 		}
 		
 	}
+	
 	
 	private static void telNoDegistir(Kullanici kullanici) {
 		//TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
@@ -237,23 +295,26 @@ public class KullaniciKayitSistemi {
 		kullanici.setTelNo(telNoAl());
 		kullaniciDB.update(kullanici);
 	}
+	
 	private static void emailDegistir(Kullanici kullanici) {
 		//TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
 		System.out.println("### Email Degistirme ###");
 		kullanici.setEmail(emailAl());
 		kullaniciDB.update(kullanici);
 	}
+	
 	private static boolean sifreDegistir(Kullanici kullanici) {
 		//TODO Potansiyel iptal islemleri icin case yapisi kurulabilir.
 		boolean isPasswordChanged = false;
 		System.out.println("### Sifre Degistirme ###");
 		System.out.print("Lutfen eski sifrenizi giriniz : ");
 		String eskiSifre = scanner.nextLine();
-		if(kullanici.getSifre().equals(eskiSifre)){
+		if (kullanici.getSifre().equals(eskiSifre)) {
 			kullanici.setSifre(sifreAl());
 			kullaniciDB.update(kullanici);
 			isPasswordChanged = true;
-		}else {
+		}
+		else {
 			System.out.println("Eski sifrenizi yanlis girdiniz !! ");
 		}
 		return isPasswordChanged;
@@ -261,10 +322,11 @@ public class KullaniciKayitSistemi {
 	
 	private static Kullanici kullaniciyiGoruntule(int id) {
 		Kullanici kullanici = kullaniciDB.findByID(id);
-		if(kullanici != null){
+		if (kullanici != null) {
 			System.out.println(kullanici);
 			return kullanici;
-		} else {
+		}
+		else {
 			System.out.println("Beklenmedik bir hata ile karsilasildi... ");
 			return null;
 		}
@@ -272,9 +334,10 @@ public class KullaniciKayitSistemi {
 	
 	private static List<Kullanici> kullanicilariGoruntule() {
 		List<Kullanici> kullaniciList = kullaniciDB.findAll();
-		if(kullaniciList.isEmpty()){
+		if (kullaniciList.isEmpty()) {
 			System.out.println("Hic kullanici bulunamadi...\n");
-		}else{
+		}
+		else {
 			kullaniciList.forEach(System.out::println);
 		}
 		return kullaniciList;
@@ -294,11 +357,13 @@ public class KullaniciKayitSistemi {
 			kullanici.setSifre(sifreAl());
 			if (kullaniciDB.update(kullanici) != null) {
 				return kullanici;
-			} else {
+			}
+			else {
 				System.out.println("Beklenmedik bir sorun ile karsilasildi.");
 				return null;
 			}
-		} else {
+		}
+		else {
 			System.out.println("Girdiginiz bilgilerde eslesmeyen alanlar var. ");
 			return null;
 		}
@@ -312,13 +377,14 @@ public class KullaniciKayitSistemi {
 		Kullanici kullanici = kullaniciDB.findByUsernameAndPassword(username, password);
 		if (kullanici != null) {
 			return kullanici;
-		} else {
+		}
+		else {
 			System.out.println("Kullanici adi veya sifre hatali. ");
 			return null;
 		}
 	}
 	
-	private static Kullanici kullaniciKaydi() {
+	public static Kullanici kullaniciKaydi() {
 		LocalDate dogumTarihi;
 		Kullanici kullanici;
 		dogumTarihi = dogumTarihiAl();
@@ -338,7 +404,8 @@ public class KullaniciKayitSistemi {
 			kullanici.setSifre(sifreAl());
 			kullaniciDB.save(kullanici);
 			return kullanici;
-		} else {
+		}
+		else {
 			System.out.println("18 Yasindan kucukler kayit islemi gerceklestiremez.");
 		}
 		return null;
@@ -353,13 +420,15 @@ public class KullaniciKayitSistemi {
 			if (kullaniciAdi.length() < 4) {
 				System.out.println("Kullanici adi 4 karakterden kisa olamaz.");
 				continue;
-			} else if (kullaniciAdi.length() > 16) {
+			}
+			else if (kullaniciAdi.length() > 16) {
 				System.out.println("Kullanici adi 16 karakterden uzun olamaz.");
 				continue;
 			}
 			if (!kullaniciDB.existsByUsername(kullaniciAdi)) {
 				return kullaniciAdi;
-			} else {
+			}
+			else {
 				System.out.println("Kullanici adi sistemde bulunmaktadir.");
 			}
 		}
@@ -373,13 +442,15 @@ public class KullaniciKayitSistemi {
 			if (tcKimlik.length() != 11) {
 				System.out.println("TC Kimlik No 11 haneli olmalidir.");
 				continue;
-			} else if (!numerikDegerKontrol(tcKimlik)) {
+			}
+			else if (!numerikDegerKontrol(tcKimlik)) {
 				System.out.println("TC Kimlik No sadece numerik karakterler barindirabilir. ");
 				continue;
 			}
 			if (!kullaniciDB.existsByTcKimlik(tcKimlik)) {
 				return tcKimlik;
-			} else {
+			}
+			else {
 				System.out.println("TC kimlik sistemde bulunmaktadir.");
 			}
 		}
@@ -391,7 +462,8 @@ public class KullaniciKayitSistemi {
 			String email = scanner.nextLine();
 			if (!kullaniciDB.existsByEmail(email)) {
 				return email;
-			} else {
+			}
+			else {
 				System.out.println("Girdiginiz email kullanilmaktadir.");
 			}
 		}
@@ -417,15 +489,18 @@ public class KullaniciKayitSistemi {
 			if (sifre.length() < 8) {
 				System.out.println("Sifre 8 karakterden kisa olamaz.");
 				continue;
-			} else if (sifre.length() > 32) {
+			}
+			else if (sifre.length() > 32) {
 				System.out.println("Sifre 32 karakterden uzun olamaz.");
 				continue;
-			} else {
+			}
+			else {
 				System.out.print("Lutfen sifreninizi tekrar giriniz : ");
 				sifreYeniden = scanner.nextLine();
 				if (sifre.equals(sifreYeniden)) {
 					return sifre;
-				} else {
+				}
+				else {
 					System.out.println("Girdiginiz sifreler eslesmiyor! ");
 				}
 			}
@@ -455,7 +530,8 @@ public class KullaniciKayitSistemi {
 			try {
 				LocalDate localDate = LocalDate.parse(date);
 				return localDate;
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				System.out.println("Lutfen dogum tarihinizi yil-ay-gun formatinda giriniz!!!\n");
 			}
 		}
@@ -467,17 +543,17 @@ public class KullaniciKayitSistemi {
 		return resitMi;
 	}
 	
-	private static void generateData(){
-		for (int i = 1; i<10; i++){
+	private static void generateData() {
+		for (int i = 1; i < 10; i++) {
 			Kullanici kullanici = new Kullanici();
-			kullanici.setIsim("kullanici" +i);
-			kullanici.setSoyisim("soyisim" +i);
-			kullanici.setEmail(kullanici.getIsim()+ "@gmail.com");
-			kullanici.setTelNo("123123121"+i);
-			kullanici.setTcKimlik("1234567891"+i);
+			kullanici.setIsim("kullanici" + i);
+			kullanici.setSoyisim("soyisim" + i);
+			kullanici.setEmail(kullanici.getIsim() + "@gmail.com");
+			kullanici.setTelNo("123123121" + i);
+			kullanici.setTcKimlik("1234567891" + i);
 			kullanici.setKullaniciAdi(kullanici.getIsim());
 			kullanici.setSifre("12345678");
-			kullanici.setDogumTarihi(LocalDate.of((1990+i),i,i));
+			kullanici.setDogumTarihi(LocalDate.of((1990 + i), i, i));
 			kullaniciDB.save(kullanici);
 		}
 	}

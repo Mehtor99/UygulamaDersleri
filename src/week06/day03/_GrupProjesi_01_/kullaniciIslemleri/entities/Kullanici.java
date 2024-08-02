@@ -1,6 +1,9 @@
 package week06.day03._GrupProjesi_01_.kullaniciIslemleri.entities;
 
+import week06.day03._GrupProjesi_01_.Sepet;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Kullanici extends BaseEntity {
     private static int kullaniciCount = 0;
@@ -13,52 +16,54 @@ public class Kullanici extends BaseEntity {
     private String tcKimlik;
     private LocalDate kayitTarihi;
     private LocalDate dogumTarihi;
-
-
-    public Kullanici(){
+    private Sepet sepet;
+    private ArrayList<Sepet> sepetList;
+    
+    
+    
+    
+    public Kullanici() {
         this.kullaniciCount++;
         this.id = kullaniciCount;
         this.kayitTarihi = LocalDate.now();
+        this.sepet = new Sepet();
+        this.sepetList = new ArrayList<>();
     }
-
+    
     public void setIsim(String isim) {
         this.isim = isim;
     }
-
+    
     public void setSoyisim(String soyisim) {
         this.soyisim = soyisim;
     }
-
+    
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public void setTelNo(String telNo) {
         this.telNo = telNo;
     }
-
+    
     public void setSifre(String sifre) {
         this.sifre = sifre;
     }
-
+    
     public void setKullaniciAdi(String kullaniciAdi) {
         this.kullaniciAdi = kullaniciAdi;
     }
-
+    
     public void setTcKimlik(String tcKimlik) {
         this.tcKimlik = tcKimlik;
     }
-
+    
     public void setDogumTarihi(LocalDate dogumTarihi) {
         this.dogumTarihi = dogumTarihi;
     }
-
+    
     public static int getKullaniciCount() {
         return kullaniciCount;
-    }
-    
-    public int getId() {
-        return id;
     }
     
     public String getIsim() {
@@ -96,7 +101,7 @@ public class Kullanici extends BaseEntity {
     public LocalDate getDogumTarihi() {
         return dogumTarihi;
     }
-
+    
     @Override
     public String toString() {
         return "Kullanici{" +
