@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/collection_framework/ornekler/MapOrnek02.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/collection_framework/ornekler/StackOrnek.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/collection_framework/set/treeset/TreeSetExample.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/CustomStringTR.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/Question001.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/Question002.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/Question003.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/Question004.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/maratonlar/maraton01/Question005.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/Kullanici.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/KullaniciDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/KullaniciKayitSistemi.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/KullaniciOzelListe.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/Mail.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/MailDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/MailOzelListe.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/Message.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/SMS.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/original/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/readme.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/KullaniciKayitSistemi.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/databases/KullaniciDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/databases/MailDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/databases/SMSDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/entities/BaseEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/entities/Kullanici.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/entities/Mail.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/entities/Message.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/entities/SMS.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/utility/DatabaseManager.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/kullanici_kayit_sistemi/refactored/utility/ICRUD.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week02/day03/odevHocaninCozum/UserMenu.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week02/day03/odevHocaninCozum/odev.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week04/KullaniciOdev/UserDB.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week04/KullaniciOdev/UserRegistrationSystem.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week04/day02/OzelListe.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek01/EUstGiyim.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek01/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek01/UstGiyim.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek02/ERole.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek02/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek02/User.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek03/EKatilTiers.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek03/EUserStatus.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek03/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek03/User.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/enumOrnekler/enumornek03/Video.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day01/interfaceOrnekler/Question01/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day02/abstraction/Cat.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day02/abstraction/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/Runner.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/KullaniciKayitSistemi.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/entities/Kullanici.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/entities/Mail.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/entities/Message.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/kullaniciIslemleri/entities/SMS.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/week06/day03/_GrupProjesi_01_/utilities/DataGenerator.java" charset="UTF-8" />
+    <file url="PROJECT" charset="windows-1254" />
+  </component>
+</project>

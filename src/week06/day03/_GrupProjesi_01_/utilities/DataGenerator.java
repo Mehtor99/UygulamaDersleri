@@ -31,7 +31,7 @@ public class DataGenerator {
 				aksesuar1 = new AksesuarUrunleri("Kolye", 100d, "Altin bir kolye. Basit ve zarif bir tasarimi var.", EKategori.AKSESUAR, 5, ETur.KOLYE, EMateryal.ALTIN, EDesen.DUZ);
 		AksesuarUrunleri aksesuar2 = new AksesuarUrunleri("Saat", 200d, "Gumusten yapilmis bir saat. Cizgili desenli bir kordonu var.", EKategori.AKSESUAR, 3, ETur.SAAT, EMateryal.GUMUS, EDesen.CIZGILI);
 		AksesuarUrunleri aksesuar3 = new AksesuarUrunleri("Bilezik", 150d, "Altin yapilmis duz bir bilezik. Hem sik hem de dayanikli.", EKategori.AKSESUAR, 7, ETur.BILEZIK, EMateryal.ALTIN, EDesen.DUZ);
-		AksesuarUrunleri aksesuar4 = new AksesuarUrunleri("Yuzuk", 250d, "Gumus bir yuzuk. Zarif bir cizgili desenle suslenmiþ.", EKategori.AKSESUAR, 4, ETur.YUZUK, EMateryal.GUMUS, EDesen.CIZGILI);
+		AksesuarUrunleri aksesuar4 = new AksesuarUrunleri("Yuzuk", 250d, "Gumus bir yuzuk. Zarif bir cizgili desenle suslenmiï¿½.", EKategori.AKSESUAR, 4, ETur.YUZUK, EMateryal.GUMUS, EDesen.CIZGILI);
 		AksesuarUrunleri aksesuar5 = new AksesuarUrunleri("Kupe", 120d, "Altindan yapilmis basit bir kupe. Gunluk kullanim icin ideal.", EKategori.AKSESUAR, 6, ETur.KUPE, EMateryal.ALTIN, EDesen.DUZ);
 		
 	}
