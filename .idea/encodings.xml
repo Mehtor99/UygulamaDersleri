@@ -13,6 +13,7 @@
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/Databases/FutbolcuDB.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/Test.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/entities/BaseEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/modules/TakimModule.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/utilities/DataGenerator.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/utilities/DatabaseManager.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/uygulamalar/FutbolApp/utilities/ICRUD.java" charset="UTF-8" />

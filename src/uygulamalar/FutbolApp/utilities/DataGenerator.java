@@ -47,11 +47,12 @@ public class DataGenerator {
 				futbolcu.setSoyIsim(SOYISIM[random.nextInt(0,SOYISIM.length)]);
 				futbolcu.setBonservisBedeli(random.nextLong(100_000,5_000_000));
 				futbolcu.setDogumTarihi(LocalDate.of(random.nextInt(1980, 2005), random.nextInt(1, 13),
-				                                     random.nextInt(1,31)));
+				                                     random.nextInt(1,28)));
 				futbolcu.setTakimID(takimID);
 			}
+			takimID++;
 		}
-		takimID++;
+		
 	}
 	
 	public static void generateTakimlar(TakimDB takimDB, LigDB ligDB){
@@ -74,7 +75,7 @@ public class DataGenerator {
 		Takim takim17 = new Takim("Göztepe",  ERenkler.ÇİFT_KIRMIZI, "Mehmet Sepil", "1925", takimDB);
 		Takim takim18 = new Takim("Denizlispor",  ERenkler.ÇİFT_KIRMIZI, "Ali İpek", "1966", takimDB);
 		
-		Lig turkiyeSuperLigi=new Lig("Türkiye super lig", ligDB);
+		Lig turkiyeSuperLigi = new Lig("Türkiye super lig", ligDB);
 		
 		turkiyeSuperLigi.getTakimList().addAll(List.of(takim1.getId(), takim2.getId(), takim3.getId(), takim4.getId(), takim5.getId(), takim6.getId(),
 		                                               takim7.getId(), takim8.getId(),

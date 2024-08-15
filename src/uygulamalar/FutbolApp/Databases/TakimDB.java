@@ -32,9 +32,22 @@ public class TakimDB extends DatabaseManager<Takim> {
 	}
 	
 	public List<Takim>  girilenMetniIcerenleriListele(String kulupIsmi){
-		return veriListesi.stream()
+		List<Takim> bulunanList = veriListesi.stream()
 		                  .filter(takim -> takim.getTakimIsim().toLowerCase().contains(kulupIsmi.toLowerCase()))
-		                  .collect(Collectors.toList());
+		                  .toList();
+		bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim())
+		           .forEach(System.out::println);
+//		System.out.println("------- Aranan takim "+ kulupIsmi + " -------");
+//		if (bulunanList.isEmpty()){
+//			System.out.println("Takim Bulunamadi!!");
+//
+//		}
+//		else{
+//			bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim())
+//			           .forEach(System.out::println);
+//		}
+//		System.out.println("-----------------------------------");
+		return bulunanList;
 	}
 	
 	public List<Takim> renklereGoreTakimBul2(ERenkler renkler){
@@ -49,4 +62,10 @@ public class TakimDB extends DatabaseManager<Takim> {
 		
 	}
 	
+	public void takimlarIsimIdList() {
+		 veriListesi.stream()
+				.map(takim -> takim.getId() + " : " + takim.getTakimIsim())
+				.collect(Collectors.toList())
+				.forEach(System.out::println);
+	}
 }

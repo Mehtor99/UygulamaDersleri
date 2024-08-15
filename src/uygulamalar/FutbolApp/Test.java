@@ -5,6 +5,7 @@ import uygulamalar.FutbolApp.Databases.LigDB;
 import uygulamalar.FutbolApp.Databases.MusabakaDB;
 import uygulamalar.FutbolApp.Databases.TakimDB;
 import uygulamalar.FutbolApp.entities.*;
+import uygulamalar.FutbolApp.modules.TakimModule;
 import uygulamalar.FutbolApp.utilities.DataGenerator;
 import uygulamalar.FutbolApp.utilities.enums.EMevki;
 /*
@@ -18,7 +19,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import static uygulamalar.FutbolApp.modules.TakimModule.menu;
+
+
+
 
 public class Test {
 	private static final FutbolcuDB futbolcuDB = new FutbolcuDB();
@@ -29,8 +32,17 @@ public class Test {
 	
 	
 	public static void main(String[] args) {
-		menu();
+		DataGenerator.generateTakimlar(takimDB,ligDB);
+		DataGenerator.rastgeleFutbolcuUret(futbolcuDB);
+		TakimModule.takimModule(takimDB,futbolcuDB,ligDB);
+		//menu();
 		
+	}
+	
+	
+	
+	public static void menu(){
+	
 	}
 	
 	
