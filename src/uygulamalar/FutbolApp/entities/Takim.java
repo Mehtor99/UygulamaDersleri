@@ -1,56 +1,44 @@
 package uygulamalar.FutbolApp.entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.PriorityQueue;
+import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.utilities.enums.ERenkler;
 
 public class Takim extends BaseEntity {
-	static int takimCount=0;
+	static int takimIdCount = 0;
 	
-	private String takimIsmi;
-	private String teknikDirektor;
+	private String takimIsim;
 	private String baskanIsmi;
 	private String kurulusTarihi;
 	private ERenkler renkler;
-	private Integer puan;
-	private Integer ligId;
+	private int menajerID=-1;
 	
-	
-	public Takim(String takimIsmi, String teknikDirektor, String baskanIsmi, String kurulusTarihi, ERenkler renkler, Integer puan, Integer ligId) {
-		this.takimIsmi = takimIsmi;
-		this.teknikDirektor = teknikDirektor;
+	public Takim(String takimIsim, ERenkler renkler, String baskanIsmi, String kurulusTarihi,TakimDB takimDB) {
+		this.takimIsim = takimIsim;
+		this.renkler = renkler;
 		this.baskanIsmi = baskanIsmi;
 		this.kurulusTarihi = kurulusTarihi;
-		this.renkler = renkler;
-		this.puan = puan;
-		this.ligId = ligId;
-		this.id = ++takimCount;
+		takimDB.save(this);
 	}
 	
-	
-	public static int getTakimCount() {
-		return takimCount;
+	public Takim(TakimDB takimDB) {
+		this.id=++takimIdCount;
+		takimDB.save(this);
 	}
 	
-	public static void setTakimCount(int takimCount) {
-		Takim.takimCount = takimCount;
+	public static int getTakimIdCount() {
+		return takimIdCount;
 	}
 	
-	public String getTakimIsmi() {
-		return takimIsmi;
+	public static void setTakimIdCount(int takimIdCount) {
+		Takim.takimIdCount = takimIdCount;
 	}
 	
-	public void setTakimIsmi(String takimIsmi) {
-		this.takimIsmi = takimIsmi;
+	public String getTakimIsim() {
+		return takimIsim;
 	}
 	
-	public String getTeknikDirektor() {
-		return teknikDirektor;
-	}
-	
-	public void setTeknikDirektor(String teknikDirektor) {
-		this.teknikDirektor = teknikDirektor;
+	public void setTakimIsim(String takimIsim) {
+		this.takimIsim = takimIsim;
 	}
 	
 	public String getBaskanIsmi() {
@@ -61,6 +49,7 @@ public class Takim extends BaseEntity {
 		this.baskanIsmi = baskanIsmi;
 	}
 	
+	
 	public String getKurulusTarihi() {
 		return kurulusTarihi;
 	}
@@ -68,6 +57,8 @@ public class Takim extends BaseEntity {
 	public void setKurulusTarihi(String kurulusTarihi) {
 		this.kurulusTarihi = kurulusTarihi;
 	}
+	
+	
 	
 	public ERenkler getRenkler() {
 		return renkler;
@@ -77,24 +68,8 @@ public class Takim extends BaseEntity {
 		this.renkler = renkler;
 	}
 	
-	public Integer getPuan() {
-		return puan;
-	}
-	
-	public void setPuan(Integer puan) {
-		this.puan = puan;
-	}
-	
-	public Integer getLigId() {
-		return ligId;
-	}
-	
-	public void setLigId(Integer ligId) {
-		this.ligId = ligId;
-	}
-	
 	@Override
 	public String toString() {
-		return "Takim{" + "takimIsmi='" + getTakimIsmi() + '\'' + ", teknikDirektor='" + getTeknikDirektor() + '\'' + ", baskanIsmi='" + getBaskanIsmi() + '\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' + ", renkler=" + getRenkler() + ", puan=" + getPuan() + ", ligId=" + getLigId() + ", id=" + getId() + '}';
+		return "Takim{" + "takimIsim='" + getTakimIsim() + '\'' + ", baskanIsmi='" + getBaskanIsmi() + '\'' + ", teknikDirektor='" + '\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' + ", puan=" + ", renkler=" + getRenkler() + ", id=" + getId() + '}';
 	}
 }

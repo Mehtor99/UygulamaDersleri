@@ -1,5 +1,7 @@
 package uygulamalar.FutbolApp.entities;
 
+import uygulamalar.FutbolApp.Databases.MusabakaDB;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -11,9 +13,12 @@ public class Musabaka extends BaseEntity {
 	private Integer evSahibiSkor;
 	private Integer misafirSkor;
 	private String hakemIsmi;
-	private LocalDate musabakaTarihi;
+	private LocalDateTime musabakaTarihi;
+	//sonradan stadyumID eklenecek
+	//musbaka_kadro entitys yapýlacak içinde 18 field olacak takim kadrosu tutacak.
 	
-	public Musabaka(Takim evSahibi, Takim misafir, Integer evSahibiSkor, Integer misafirSkor, String hakemIsmi, LocalDate musabakaTarihi) {
+	public Musabaka(Takim evSahibi, Takim misafir, Integer evSahibiSkor, Integer misafirSkor, String hakemIsmi,
+	                LocalDateTime musabakaTarihi, MusabakaDB musabakaDB) {
 		this.evSahibi = evSahibi;
 		this.misafir = misafir;
 		this.evSahibiSkor = evSahibiSkor;
@@ -21,6 +26,7 @@ public class Musabaka extends BaseEntity {
 		this.hakemIsmi = hakemIsmi;
 		this.musabakaTarihi = musabakaTarihi;
 		this.id = ++musabakaIdCount;
+		musabakaDB.save(this);
 	}
 	
 	public Takim getEvSahibi() {
@@ -63,11 +69,11 @@ public class Musabaka extends BaseEntity {
 		this.hakemIsmi = hakemIsmi;
 	}
 	
-	public LocalDate getMusabakaTarihi() {
+	public LocalDateTime getMusabakaTarihi() {
 		return musabakaTarihi;
 	}
 	
-	public void setMusabakaTarihi(LocalDate musabakaTarihi) {
+	public void setMusabakaTarihi(LocalDateTime musabakaTarihi) {
 		this.musabakaTarihi = musabakaTarihi;
 	}
 	

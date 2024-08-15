@@ -1,31 +1,43 @@
 package uygulamalar.FutbolApp.entities;
 
+import uygulamalar.FutbolApp.Databases.FutbolcuDB;
+import uygulamalar.FutbolApp.utilities.enums.EMevki;
+
 import java.time.LocalDate;
 
-public class Futbolcu extends BaseEntity {
-	static int idCount = 0;
+public class Futbolcu extends BaseEntity{
+	static int futbolcuIdCount=0;
 	
 	private String isim;
-	private String soyisim;
-	private EMevki mevki;
+	private String soyIsim;
 	private LocalDate dogumTarihi;
-	private String bonservisBedeli;
-	private Integer takimId;
+	private Long bonservisBedeli;
+	private EMevki mevki;
+	private Integer takimID;
 	
-	public Futbolcu(String isim, String soyisim, EMevki mevki, LocalDate dogumTarihi, String bonservisBedeli) {
+	public Futbolcu(String isim, String soyIsim, LocalDate dogumTarihi, Long bonservisBedeli, EMevki mevki,
+	                FutbolcuDB futbolcuDB) {
 		this.isim = isim;
-		this.soyisim = soyisim;
-		this.mevki = mevki;
+		this.soyIsim = soyIsim;
 		this.dogumTarihi = dogumTarihi;
 		this.bonservisBedeli = bonservisBedeli;
+		this.mevki = mevki;
+		this.id=++futbolcuIdCount;
+		futbolcuDB.save(this);
+		
 	}
 	
-	public static int getIdCount() {
-		return idCount;
+	public Futbolcu(FutbolcuDB futbolcuDB) {
+		futbolcuDB.save(this);
+		this.id=++futbolcuIdCount;
 	}
 	
-	public static void setIdCount(int idCount) {
-		Futbolcu.idCount = idCount;
+	public static int getFutbolcuIdCount() {
+		return futbolcuIdCount;
+	}
+	
+	public static void setFutbolcuIdCount(int futbolcuIdCount) {
+		Futbolcu.futbolcuIdCount = futbolcuIdCount;
 	}
 	
 	public String getIsim() {
@@ -36,20 +48,12 @@ public class Futbolcu extends BaseEntity {
 		this.isim = isim;
 	}
 	
-	public String getSoyisim() {
-		return soyisim;
+	public String getSoyIsim() {
+		return soyIsim;
 	}
 	
-	public void setSoyisim(String soyisim) {
-		this.soyisim = soyisim;
-	}
-	
-	public EMevki getMevki() {
-		return mevki;
-	}
-	
-	public void setMevki(EMevki mevki) {
-		this.mevki = mevki;
+	public void setSoyIsim(String soyIsim) {
+		this.soyIsim = soyIsim;
 	}
 	
 	public LocalDate getDogumTarihi() {
@@ -60,24 +64,32 @@ public class Futbolcu extends BaseEntity {
 		this.dogumTarihi = dogumTarihi;
 	}
 	
-	public String getBonservisBedeli() {
+	public Long getBonservisBedeli() {
 		return bonservisBedeli;
 	}
 	
-	public void setBonservisBedeli(String bonservisBedeli) {
+	public void setBonservisBedeli(Long bonservisBedeli) {
 		this.bonservisBedeli = bonservisBedeli;
 	}
 	
-	public Integer getTakimId() {
-		return takimId;
+	public EMevki getMevki() {
+		return mevki;
 	}
 	
-	public void setTakimId(Integer takimId) {
-		this.takimId = takimId;
+	public void setMevki(EMevki mevki) {
+		this.mevki = mevki;
+	}
+	
+	public Integer getTakimID() {
+		return takimID;
+	}
+	
+	public void setTakimID(Integer takimID) {
+		this.takimID = takimID;
 	}
 	
 	@Override
 	public String toString() {
-		return "Futbolcu{" + "isim='" + getIsim() + '\'' + ", soyisim='" + getSoyisim() + '\'' + ", mevki=" + getMevki() + ", dogumTarihi=" + getDogumTarihi() + ", bonservisBedeli='" + getBonservisBedeli() + '\'' + ", takimId=" + getTakimId() + ", id=" + getId() + '}';
+		return "Futbolcu{" + "isim='" + getIsim() + '\'' + ", soyIsim='" + getSoyIsim() + '\'' + ", dogumTarihi=" + getDogumTarihi() + ", bonservisBedeli='" + getBonservisBedeli() + '\'' + ", mevki=" + getMevki() + ", takimID=" + getTakimID() + ", id=" + getId() + '}';
 	}
 }

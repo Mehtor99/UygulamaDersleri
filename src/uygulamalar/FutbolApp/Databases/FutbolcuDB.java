@@ -1,6 +1,6 @@
 package uygulamalar.FutbolApp.Databases;
 
-import uygulamalar.FutbolApp.entities.EMevki;
+import uygulamalar.FutbolApp.utilities.enums.EMevki;
 import uygulamalar.FutbolApp.entities.Futbolcu;
 import uygulamalar.FutbolApp.utilities.DatabaseManager;
 
@@ -12,7 +12,7 @@ public class FutbolcuDB extends DatabaseManager<Futbolcu> {
 	
 	public Optional<Futbolcu> isimSoyisimeGoreBul(String isim, String soyisim){
 		return veriListesi.stream()
-				.filter(futbolcu -> futbolcu.getIsim().equalsIgnoreCase(isim)&&futbolcu.getSoyisim().equalsIgnoreCase(soyisim))
+				.filter(futbolcu -> futbolcu.getIsim().equalsIgnoreCase(isim)&&futbolcu.getSoyIsim().equalsIgnoreCase(soyisim))
 				.findFirst();
 	}
 	
@@ -24,11 +24,11 @@ public class FutbolcuDB extends DatabaseManager<Futbolcu> {
 	
 	public List<Futbolcu> takimIdyeGoreFutbolcuBul(Integer takimId){
 		return veriListesi.stream()
-				.filter(futbolcu -> futbolcu.getTakimId().equals(takimId))
+				.filter(futbolcu -> futbolcu.getTakimID().equals(takimId))
 				.collect(Collectors.toList());
 	}
 	
-	//? id'ye göre futbolcu silme
+	//? id'ye gÃ¶re futbolcu silme
 	public boolean fulbolcuSil(int id){
 		return veriListesi.removeIf(futbolcu ->futbolcu.getId() == id);
 	}
