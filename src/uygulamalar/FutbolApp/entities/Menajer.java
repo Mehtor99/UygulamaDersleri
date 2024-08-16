@@ -1,5 +1,8 @@
 package uygulamalar.FutbolApp.entities;
 
+import uygulamalar.FutbolApp.Databases.MenajerDB;
+import uygulamalar.FutbolApp.utilities.FileIOWriter;
+
 import java.time.LocalDate;
 
 public class Menajer extends BaseEntity {
@@ -11,11 +14,16 @@ public class Menajer extends BaseEntity {
 	private LocalDate dogumTarihi;
 	private Integer takimId=-1;
 	
-	public Menajer(String isim, String soyIsim, long sozlesmeBedeli, LocalDate dogumTarihi) {
+	public Menajer(LocalDate dogumTarihi, String isim, String soyIsim, int takimId, MenajerDB menajerDB) {
+		this.dogumTarihi = dogumTarihi;
 		this.isim = isim;
 		this.soyIsim = soyIsim;
-		this.dogumTarihi = dogumTarihi;
+		this.takimId = takimId;
+		this.id = manajerIDCount;
+		menajerDB.save(this);
+		FileIOWriter.menajerleriDosyayaYazdir(menajerDB);
 	}
+	
 	
 	public static int getManajerIDCount() {
 		return manajerIDCount;

@@ -1,13 +1,12 @@
 package uygulamalar.FutbolApp;
 
-import uygulamalar.FutbolApp.Databases.FutbolcuDB;
-import uygulamalar.FutbolApp.Databases.LigDB;
-import uygulamalar.FutbolApp.Databases.MusabakaDB;
-import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.Databases.*;
 import uygulamalar.FutbolApp.entities.*;
 import uygulamalar.FutbolApp.modules.TakimModule;
 import uygulamalar.FutbolApp.utilities.DataGenerator;
-import uygulamalar.FutbolApp.utilities.enums.EMevki;
+import uygulamalar.FutbolApp.utilities.FileIOReader;
+import uygulamalar.FutbolApp.utilities.FileIOWriter;
+
 /*
 [17:27] Alperen Ikinci (BilgeAdam Boost)
 Önemli!
@@ -15,35 +14,27 @@ Arkadaşlar toplantıyı sonlandırıyorum. Yarın itibariyle entityler hazır, 
 Dolayısıyla oluşturduğum nesnelerin DB'de kayıt altına alındığı bir yapı bekliyorum. Bu yapının üzerinden devam edeceğiz.
 Hepinizin eline sağlık, yarın görüşmek üzere!
  */
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
-
 
 
 
 public class Test {
-	private static final FutbolcuDB futbolcuDB = new FutbolcuDB();
-	private static final MusabakaDB musabakaDB = new MusabakaDB();
-	private static final LigDB ligDB = new LigDB();
-	private static final TakimDB takimDB = new TakimDB();
-	private static final Scanner scanner = new Scanner(System.in);
-	
+	private static FutbolcuDB futbolcuDB = new FutbolcuDB();
+	private static TakimDB takimDB=new TakimDB();
+	private static LigDB ligDB = new LigDB();
+	private static MenajerDB menajerDB=new MenajerDB();
 	
 	public static void main(String[] args) {
-		DataGenerator.generateTakimlar(takimDB,ligDB);
-		DataGenerator.rastgeleFutbolcuUret(futbolcuDB);
-		TakimModule.takimModule(takimDB,futbolcuDB,ligDB);
-		//menu();
-		
+//		DataGenerator.generateData(futbolcuDB,takimDB,ligDB,menajerDB);
+//		FileIOWriter.nesneleriYazdir(futbolcuDB,takimDB,ligDB,menajerDB);
+		FileIOReader.nesneleriOku(futbolcuDB,takimDB,ligDB,menajerDB);
+		ligDB.findAll().forEach(System.out::println);
+		starApplication();
 	}
-	
-	
-	
-	public static void menu(){
-	
+	public static void starApplication(){
+		int opt =0;
+		do {
+			TakimModule.takimModule(takimDB,futbolcuDB,ligDB);
+		}while (opt!=0);
 	}
-	
 	
 }

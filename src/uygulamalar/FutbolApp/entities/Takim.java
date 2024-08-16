@@ -1,6 +1,7 @@
 package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.utilities.FileIOWriter;
 import uygulamalar.FutbolApp.utilities.enums.ERenkler;
 
 public class Takim extends BaseEntity {
@@ -10,7 +11,8 @@ public class Takim extends BaseEntity {
 	private String baskanIsmi;
 	private String kurulusTarihi;
 	private ERenkler renkler;
-	private int menajerID=-1;
+	
+	
 	
 	public Takim(String takimIsim, ERenkler renkler, String baskanIsmi, String kurulusTarihi,TakimDB takimDB) {
 		this.takimIsim = takimIsim;
@@ -19,11 +21,14 @@ public class Takim extends BaseEntity {
 		this.kurulusTarihi = kurulusTarihi;
 		this.id =++takimIdCount;
 		takimDB.save(this);
+		FileIOWriter.takimlariDosyayaYazdir(takimDB);
 	}
+	
 	
 	public Takim(TakimDB takimDB) {
 		this.id=++takimIdCount;
 		takimDB.save(this);
+		FileIOWriter.takimlariDosyayaYazdir(takimDB);
 	}
 	
 	public static int getTakimIdCount() {
@@ -71,6 +76,6 @@ public class Takim extends BaseEntity {
 	
 	@Override
 	public String toString() {
-		return "Takim{" + "takimIsim='" + getTakimIsim() + '\'' + ", baskanIsmi='" + getBaskanIsmi() + '\'' + ", teknikDirektor='" + '\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' + ", puan=" + ", renkler=" + getRenkler() + ", id=" + getId() + '}';
+		return "Takim{" + "takimIsim='" + getTakimIsim() + '\'' + ", baskanIsmi='" + getBaskanIsmi() + '\'' +'\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' + ", puan=" + ", renkler=" + getRenkler() + ", id=" + getId() + '}';
 	}
 }

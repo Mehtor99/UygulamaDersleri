@@ -35,8 +35,7 @@ public class TakimDB extends DatabaseManager<Takim> {
 		List<Takim> bulunanList = veriListesi.stream()
 		                  .filter(takim -> takim.getTakimIsim().toLowerCase().contains(kulupIsmi.toLowerCase()))
 		                  .toList();
-		bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim())
-		           .forEach(System.out::println);
+		bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim());
 //		System.out.println("------- Aranan takim "+ kulupIsmi + " -------");
 //		if (bulunanList.isEmpty()){
 //			System.out.println("Takim Bulunamadi!!");

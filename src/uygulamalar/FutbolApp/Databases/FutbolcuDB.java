@@ -22,7 +22,7 @@ public class FutbolcuDB extends DatabaseManager<Futbolcu> {
 				.collect(Collectors.toList());
 	}
 	
-	public List<Futbolcu> takimIdyeGoreFutbolcuBul(Integer takimId){
+	public List<Futbolcu> takimIdyeGoreFutbolculariListele(Integer takimId){
 		return veriListesi.stream()
 				.filter(futbolcu -> futbolcu.getTakimID().equals(takimId))
 				.collect(Collectors.toList());

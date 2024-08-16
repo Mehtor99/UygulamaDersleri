@@ -2,6 +2,7 @@ package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.LigDB;
 import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.utilities.FileIOWriter;
 import uygulamalar.FutbolApp.utilities.enums.EBolge;
 import uygulamalar.FutbolApp.utilities.enums.EKume;
 
@@ -12,7 +13,7 @@ import java.util.Map;
 
 public class Lig extends BaseEntity {
 	static int ligIDCount = 0;
-	//alperen hocaya hashmap ile olurmu sor
+	
 	
 	private String ligIsmi;
 	private List<Integer> takimIdList;
@@ -25,6 +26,7 @@ public class Lig extends BaseEntity {
 		this.id=++ligIDCount;
 		takimIdList=new ArrayList<>();
 		ligDB.save(this);
+		FileIOWriter.ligleriDosyayaYazdir(ligDB);
 	}
 	
 	public Lig(String ligIsmi,LigDB ligDB) {
@@ -32,7 +34,21 @@ public class Lig extends BaseEntity {
 		this.ligIsmi = ligIsmi;
 		takimIdList=new ArrayList<>();
 		ligDB.save(this);
+		FileIOWriter.ligleriDosyayaYazdir(ligDB);
 	}
+	
+	public Lig(String ligIsmi, String sezon, EKume kume, EBolge bolge, LigDB ligDB) {
+		this.ligIsmi = ligIsmi;
+		this.sezon = sezon;
+		this.kume = kume;
+		this.bolge = bolge;
+		this.id=++ligIDCount;
+		takimIdList=new ArrayList<>();
+		ligDB.save(this);
+		FileIOWriter.ligleriDosyayaYazdir(ligDB);
+		
+	}
+	
 	
 	public static int getLigIDCount() {
 		return ligIDCount;

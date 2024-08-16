@@ -1,6 +1,7 @@
 package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.FutbolcuDB;
+import uygulamalar.FutbolApp.utilities.FileIOWriter;
 import uygulamalar.FutbolApp.utilities.enums.EMevki;
 
 import java.time.LocalDate;
@@ -24,12 +25,13 @@ public class Futbolcu extends BaseEntity{
 		this.mevki = mevki;
 		this.id=++futbolcuIdCount;
 		futbolcuDB.save(this);
-		
+		FileIOWriter.futbolculariDosyayaYazdir(futbolcuDB);
 	}
 	
 	public Futbolcu(FutbolcuDB futbolcuDB) {
 		futbolcuDB.save(this);
 		this.id=++futbolcuIdCount;
+		FileIOWriter.futbolculariDosyayaYazdir(futbolcuDB);
 	}
 	
 	public static int getFutbolcuIdCount() {
