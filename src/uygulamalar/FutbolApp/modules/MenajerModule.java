@@ -48,8 +48,8 @@ public class MenajerModule {
 			else {
 				System.out.println("giriþ yapýlamadý.Lütfen tekrar deneyiniz");
 			}
-			
 		}
+		
 	}
 	
 	private static int menajerGirisMenu() {
@@ -63,75 +63,87 @@ public class MenajerModule {
 	}
 	
 	private static int menajerGirisMenuOpsiyonlari(int opt) {
-		switch (opt) {
-			case 1: {
-				girisYap();
-				menajerMenuOpsiyonlari(menajerMenu());
-				break;
+		while (true) {
+			switch (opt) {
+				case 1: {
+					girisYap();
+					menajerMenuOpsiyonlari(menajerMenu());
+					break;
+				}
+				case 2: {
+					System.out.println("Ana menuye donuluyor");
+					break;
+				}
+				case 0: {
+					System.out.println("0--Ust menuye donuluyor ");
+					break;
+				}
 			}
-			case 2: {
-				System.out.println("Ana menuye donuluyor");
-				break;
-			}
-		}
-		return opt;
-	}
-	
-	private static int menajerMenu() {
-		System.out.println("-----Menajer Menu-----");
-		System.out.println("1--Takýmimin detaylarini goruntule");
-		System.out.println("2--Takimimin futbolcularini goruntule");
-		System.out.println("3--Takimlarin ozet bilgilerini goruntule");
-		System.out.println("0-- Cikis Yap");
-		System.out.print("Seciminiz: ");
-		int opt = scanner.nextInt();
-		scanner.nextLine();
-		return opt;
-	}
-	
-	private static void menajerMenuOpsiyonlari(int opt) {
-		switch (opt) {
-			case 1: {
-				kulubumunDetaylariniGoruntule();
-				break;
-			}
-			case 2 :{
-				kulubumunFutbolculariniGoruntule();
-				break;
-			}
-			case 3:{
-				takimlerinOzetBilgileriniGoruntule();
-				takimIdyeGoreFutbolcularOzetBilgi();
-				break;
+			return opt;
 			}
 		}
-	}
-	
-	private static void takimIdyeGoreFutbolcularOzetBilgi() {
-		System.out.println("Futbolcularini goruntulemek istediginiz takimi seciniz:");
-		int takimId = scanner.nextInt();scanner.nextLine();
-		List<Futbolcu> futbolcuList = futbolcuDB.takimIdyeGoreFutbolculariListele(takimId);
-		futbolcuList.forEach(futbolcu-> System.out.println(futbolcu.toStringOzet()));
-	}
-	
-	
-	private static void takimlerinOzetBilgileriniGoruntule() {
-		takimDB.takimlarIsimIdList();
-	}
-	
-	private static void kulubumunFutbolculariniGoruntule() {
-		if (aktifMenajer.isEmpty()) {
-			System.out.println("Lutfen giris sayfasindan giris yapiniz !! ");
+		
+		private static int menajerMenu () {
+			System.out.println("-----Menajer Menu-----");
+			System.out.println("1--Takýmimin detaylarini goruntule");
+			System.out.println("2--Takimimin futbolcularini goruntule");
+			System.out.println("3--Takimlarin ozet bilgilerini goruntule");
+			System.out.println("0--Ust menuye don ");
+			System.out.print("Seciminiz: ");
+			int opt = scanner.nextInt();
+			scanner.nextLine();
+			return opt;
 		}
-		List<Futbolcu> takiminFutbolculari = futbolcuDB.takimIdyeGoreFutbolculariListele(aktifMenajer.get().getTakimId());
-		takiminFutbolculari.forEach(System.out::println);
-	}
-	
-	private static void kulubumunDetaylariniGoruntule() {
-		if (aktifMenajer.isEmpty()) {
-			System.out.println("Lutfen giris sayfasindan giris yapiniz !! ");
+		
+		private static int menajerMenuOpsiyonlari ( int opt){
+			switch (opt) {
+				case 1: {
+					kulubumunDetaylariniGoruntule();
+					break;
+				}
+				case 2: {
+					kulubumunFutbolculariniGoruntule();
+					break;
+				}
+				case 3: {
+					takimlerinOzetBilgileriniGoruntule();
+					takimIdyeGoreFutbolcularOzetBilgi();
+					break;
+				}
+				case 0: {
+					System.out.println("Ust menuye donuluyor");
+				}
+			}
+			return opt;
 		}
-		takimDB.menajerinTakimIdsineGoreTakimBul(aktifMenajer.get().getTakimId());
+		
+		private static void takimIdyeGoreFutbolcularOzetBilgi () {
+			System.out.println("Futbolcularini goruntulemek istediginiz takimi seciniz:");
+			int takimId = scanner.nextInt();
+			scanner.nextLine();
+			List<Futbolcu> futbolcuList = futbolcuDB.takimIdyeGoreFutbolculariListele(takimId);
+			futbolcuList.forEach(futbolcu -> System.out.println(futbolcu.toStringOzet()));
+		}
+		
+		
+		private static void takimlerinOzetBilgileriniGoruntule () {
+			takimDB.takimlarIsimIdList();
+		}
+		
+		private static void kulubumunFutbolculariniGoruntule () {
+			if (aktifMenajer.isEmpty()) {
+				System.out.println("Lutfen giris sayfasindan giris yapiniz !! ");
+			}
+			List<Futbolcu> takiminFutbolculari =
+					futbolcuDB.takimIdyeGoreFutbolculariListele(aktifMenajer.get().getTakimId());
+			takiminFutbolculari.forEach(System.out::println);
+		}
+		
+		private static void kulubumunDetaylariniGoruntule () {
+			if (aktifMenajer.isEmpty()) {
+				System.out.println("Lutfen giris sayfasindan giris yapiniz !! ");
+			}
+			takimDB.menajerinTakimIdsineGoreTakimBul(aktifMenajer.get().getTakimId());
+		}
+		
 	}
-
-}
