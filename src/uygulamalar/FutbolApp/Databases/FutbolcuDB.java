@@ -1,10 +1,12 @@
 package uygulamalar.FutbolApp.Databases;
 
+import uygulamalar.FutbolApp.entities.Takim;
 import uygulamalar.FutbolApp.utilities.enums.EMevki;
 import uygulamalar.FutbolApp.entities.Futbolcu;
 import uygulamalar.FutbolApp.utilities.DatabaseManager;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -28,9 +30,15 @@ public class FutbolcuDB extends DatabaseManager<Futbolcu> {
 				.collect(Collectors.toList());
 	}
 	
+	
+	
 	//? id'ye göre futbolcu silme
 	public boolean fulbolcuSil(int id){
 		return veriListesi.removeIf(futbolcu ->futbolcu.getId() == id);
 	}
+	
+	
+	
+	
 	
 }

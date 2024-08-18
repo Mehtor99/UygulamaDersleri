@@ -13,17 +13,26 @@ public class Menajer extends BaseEntity {
 	//private long sozlesmeBedeli;  byraya sonradan sozlesme entitysi gelecek
 	private LocalDate dogumTarihi;
 	private Integer takimId=-1;
+	private String sifre;
 	
-	public Menajer(LocalDate dogumTarihi, String isim, String soyIsim, int takimId, MenajerDB menajerDB) {
+	public Menajer(LocalDate dogumTarihi, String isim, String soyIsim,String sifre, int takimId, MenajerDB menajerDB) {
 		this.dogumTarihi = dogumTarihi;
 		this.isim = isim;
 		this.soyIsim = soyIsim;
+		this.sifre = sifre;
 		this.takimId = takimId;
-		this.id = manajerIDCount;
+		this.id = ++manajerIDCount;
 		menajerDB.save(this);
 		FileIOWriter.menajerleriDosyayaYazdir(menajerDB);
 	}
 	
+	public String getSifre() {
+		return sifre;
+	}
+	
+	public void setSifre(String sifre) {
+		this.sifre = sifre;
+	}
 	
 	public static int getManajerIDCount() {
 		return manajerIDCount;
@@ -67,6 +76,6 @@ public class Menajer extends BaseEntity {
 	
 	@Override
 	public String toString() {
-		return "Manajer{" + "isim='" + getIsim() + '\'' + ", soyIsim='" + getSoyIsim() + '\'' + ", dogumTarihi=" + getDogumTarihi() + ", id=" + getId() + '}';
+		return "Menajer{" + "isim='" + getIsim() + '\'' + ", soyIsim='" + getSoyIsim() + '\'' + ", dogumTarihi=" + getDogumTarihi() + ", takimId=" + getTakimId() + ", sifre='" + getSifre() + '\'' + ", id=" + getId() + '}';
 	}
 }

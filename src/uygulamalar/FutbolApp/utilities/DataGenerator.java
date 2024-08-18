@@ -96,24 +96,25 @@ public class DataGenerator {
 	
 	
 	public static void generateManajer(MenajerDB menajerDB){
-		Menajer menajer1 = new Menajer(LocalDate.of(1976, 6, 10), "Okan", "Buruk", 1,menajerDB);
-		Menajer menajer2 = new Menajer(LocalDate.of(1955, 12, 24), "Jorge", "Jesus", 2,menajerDB);
-		Menajer menajer3 = new Menajer(LocalDate.of(1967, 3, 24), "Şenol", "Güneş", 3, menajerDB);
-		Menajer menajer4 = new Menajer(LocalDate.of(1962, 10, 20), "Abdullah", "Avcı", 4,menajerDB);
-		Menajer menajer5 = new Menajer(LocalDate.of(1981, 1, 4), "Emre", "Belözoğlu", 5,menajerDB);
-		Menajer menajer6 = new Menajer(LocalDate.of(1973, 3, 15), "Bülent", "Korkmaz", 6,menajerDB);
-		Menajer menajer7 = new Menajer(LocalDate.of(1964, 3, 23), "Ersun", "Yanal", 7,menajerDB);
-		Menajer menajer8 = new Menajer(LocalDate.of(1974, 8, 16), "İlhan", "Palut", 8,menajerDB);
-		Menajer menajer9 = new Menajer(LocalDate.of(1970, 11, 27), "Rıza", "Çalımbay", 9,menajerDB);
-		Menajer menajer10 = new Menajer(LocalDate.of(1968, 2, 28), "Bülent", "Uygun", 10,menajerDB);
-		Menajer menajer11 = new Menajer(LocalDate.of(1978, 8, 15), "Erol", "Bulut", 11,menajerDB);
-		Menajer menajer12 = new Menajer(LocalDate.of(1981, 1, 4), "Emre", "Belözoğlu", 12,menajerDB);
-		Menajer menajer13 = new Menajer(LocalDate.of(1970, 4, 5), "Çağlar", "Karabıyık", 13,menajerDB);
-		Menajer menajer14 = new Menajer(LocalDate.of(1965, 8, 20), "Yılmaz", "Vural", 14,menajerDB);
-		Menajer menajer15 = new Menajer(LocalDate.of(1980, 10, 27), "Çağdaş", "Atan", 15,menajerDB);
-		Menajer menajer16 = new Menajer(LocalDate.of(1969, 6, 12), "İbrahim", "Üzülmez", 16,menajerDB);
-		Menajer menajer17 = new Menajer(LocalDate.of(1970, 6, 1), "Tamer", "Tuna", 17,menajerDB);
-		Menajer menajer18 = new Menajer(LocalDate.of(1977, 2, 18), "Yücel", "İldiz", 18,menajerDB);
+		final String sifre = "12345678";
+		Menajer menajer1 = new Menajer(LocalDate.of(1976, 6, 10), "Okan", "Buruk",sifre ,1,menajerDB);
+		Menajer menajer2 = new Menajer(LocalDate.of(1955, 12, 24), "Jorge", "Jesus",sifre , 2,menajerDB);
+		Menajer menajer3 = new Menajer(LocalDate.of(1967, 3, 24), "Şenol", "Güneş",sifre , 3, menajerDB);
+		Menajer menajer4 = new Menajer(LocalDate.of(1962, 10, 20), "Abdullah", "Avcı",sifre , 4,menajerDB);
+		Menajer menajer5 = new Menajer(LocalDate.of(1981, 1, 4), "Emre", "Belözoğlu",sifre , 5,menajerDB);
+		Menajer menajer6 = new Menajer(LocalDate.of(1973, 3, 15), "Bülent", "Korkmaz",sifre , 6,menajerDB);
+		Menajer menajer7 = new Menajer(LocalDate.of(1964, 3, 23), "Ersun", "Yanal", sifre ,7,menajerDB);
+		Menajer menajer8 = new Menajer(LocalDate.of(1974, 8, 16), "İlhan", "Palut", sifre ,8,menajerDB);
+		Menajer menajer9 = new Menajer(LocalDate.of(1970, 11, 27), "Rıza", "Çalımbay",sifre , 9,menajerDB);
+		Menajer menajer10 = new Menajer(LocalDate.of(1968, 2, 28), "Bülent", "Uygun",sifre , 10,menajerDB);
+		Menajer menajer11 = new Menajer(LocalDate.of(1978, 8, 15), "Erol", "Bulut",sifre , 11,menajerDB);
+		Menajer menajer12 = new Menajer(LocalDate.of(1981, 1, 4), "Emre", "Belözoğlu",sifre , 12,menajerDB);
+		Menajer menajer13 = new Menajer(LocalDate.of(1970, 4, 5), "Çağlar", "Karabıyık",sifre , 13,menajerDB);
+		Menajer menajer14 = new Menajer(LocalDate.of(1965, 8, 20), "Yılmaz", "Vural",sifre , 14,menajerDB);
+		Menajer menajer15 = new Menajer(LocalDate.of(1980, 10, 27), "Çağdaş", "Atan", sifre ,15,menajerDB);
+		Menajer menajer16 = new Menajer(LocalDate.of(1969, 6, 12), "İbrahim", "Üzülmez",sifre , 16,menajerDB);
+		Menajer menajer17 = new Menajer(LocalDate.of(1970, 6, 1), "Tamer", "Tuna",sifre , 17,menajerDB);
+		Menajer menajer18 = new Menajer(LocalDate.of(1977, 2, 18), "Yücel", "İldiz",sifre , 18,menajerDB);
 		
 	}
 	

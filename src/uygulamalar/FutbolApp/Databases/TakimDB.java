@@ -1,5 +1,7 @@
 package uygulamalar.FutbolApp.Databases;
 
+import uygulamalar.FutbolApp.entities.Futbolcu;
+import uygulamalar.FutbolApp.entities.Menajer;
 import uygulamalar.FutbolApp.utilities.enums.ERenkler;
 import uygulamalar.FutbolApp.entities.Takim;
 import uygulamalar.FutbolApp.utilities.DatabaseManager;
@@ -55,7 +57,6 @@ public class TakimDB extends DatabaseManager<Takim> {
 			if (takim.getRenkler().equals(renkler)){
 				takimRenkleri.add(takim);
 			}
-			
 		}
 		return takimRenkleri;
 		
@@ -67,4 +68,12 @@ public class TakimDB extends DatabaseManager<Takim> {
 				.collect(Collectors.toList())
 				.forEach(System.out::println);
 	}
+	
+	public void menajerinTakimIdsineGoreTakimBul(Integer takimId) {
+		Optional<Takim> bulunanTakim = veriListesi.stream()
+		                .filter(takim -> takim.getId() == takimId).findFirst();
+		System.out.println(bulunanTakim.get());
+	}
+	
+	
 }

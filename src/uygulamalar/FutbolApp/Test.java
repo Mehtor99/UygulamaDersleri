@@ -2,6 +2,7 @@ package uygulamalar.FutbolApp;
 
 import uygulamalar.FutbolApp.Databases.*;
 import uygulamalar.FutbolApp.entities.*;
+import uygulamalar.FutbolApp.modules.MenajerModule;
 import uygulamalar.FutbolApp.modules.TakimModule;
 import uygulamalar.FutbolApp.utilities.DataGenerator;
 import uygulamalar.FutbolApp.utilities.FileIOReader;
@@ -25,15 +26,16 @@ public class Test {
 	
 	public static void main(String[] args) {
 //		DataGenerator.generateData(futbolcuDB,takimDB,ligDB,menajerDB);
-//		FileIOWriter.nesneleriYazdir(futbolcuDB,takimDB,ligDB,menajerDB);
+//    	FileIOWriter.nesneleriYazdir(futbolcuDB,takimDB,ligDB,menajerDB);
 		FileIOReader.nesneleriOku(futbolcuDB,takimDB,ligDB,menajerDB);
-		ligDB.findAll().forEach(System.out::println);
+
 		starApplication();
-	}
+	};
 	public static void starApplication(){
 		int opt =0;
 		do {
-			TakimModule.takimModule(takimDB,futbolcuDB,ligDB);
+		//	TakimModule.takimModule(takimDB,futbolcuDB,ligDB);
+			MenajerModule.menajerModule(menajerDB,takimDB,futbolcuDB);
 		}while (opt!=0);
 	}
 	
