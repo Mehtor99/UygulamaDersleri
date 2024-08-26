@@ -12,33 +12,23 @@ import java.util.stream.Collectors;
 
 public class FutbolcuDB extends DatabaseManager<Futbolcu> {
 	
-	public Optional<Futbolcu> isimSoyisimeGoreBul(String isim, String soyisim){
+	private static final FutbolcuDB instance = new FutbolcuDB();
+	
+	private FutbolcuDB() {}
+	
+	public static FutbolcuDB getInstance() {
+		return instance;
+	}
+	
+	public List<Futbolcu> takimIdyeGoreFutbolcuBul(Integer takimId){
 		return veriListesi.stream()
-				.filter(futbolcu -> futbolcu.getIsim().equalsIgnoreCase(isim)&&futbolcu.getSoyIsim().equalsIgnoreCase(soyisim))
-				.findFirst();
+		                  .filter(futbolcu -> futbolcu.getTakimID().equals(takimId))
+		                  .collect(Collectors.toList());
 	}
 	
-	public List<Futbolcu> mevkiBul(EMevki mevki){
+	public List<Futbolcu> takimIdyeGoreFutbolculariListele(int takimId) {
 		return veriListesi.stream()
-				.filter(futbolcu -> futbolcu.getMevki().equals(mevki))
-				.collect(Collectors.toList());
+		                  .filter(futbolcu -> futbolcu.getTakimID().equals(takimId))
+		                  .collect(Collectors.toList());
 	}
-	
-	public List<Futbolcu> takimIdyeGoreFutbolculariListele(Integer takimId){
-		return veriListesi.stream()
-				.filter(futbolcu -> futbolcu.getTakimID().equals(takimId))
-				.collect(Collectors.toList());
-	}
-	
-	
-	
-	//? id'ye göre futbolcu silme
-	public boolean fulbolcuSil(int id){
-		return veriListesi.removeIf(futbolcu ->futbolcu.getId() == id);
-	}
-	
-	
-	
-	
-	
 }

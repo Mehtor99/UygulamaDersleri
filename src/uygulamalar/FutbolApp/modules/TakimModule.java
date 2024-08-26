@@ -5,16 +5,17 @@ import uygulamalar.FutbolApp.Databases.LigDB;
 import uygulamalar.FutbolApp.Databases.TakimDB;
 import uygulamalar.FutbolApp.entities.Futbolcu;
 import uygulamalar.FutbolApp.entities.Takim;
+import uygulamalar.FutbolApp.model.DatabaseModel;
+
 import java.util.*;
 
 public class TakimModule {
-	private static TakimDB takimDB;
-	private static FutbolcuDB futbolcuDB;
+	private static DatabaseModel databaseModel;
 	private static final Scanner scanner = new Scanner(System.in);
 	
-	public static void takimModule(TakimDB takimDB, FutbolcuDB futbolcuDB, LigDB ligDB) {
-		TakimModule.futbolcuDB = futbolcuDB;
-		TakimModule.takimDB = takimDB;
+	public static void takimModule(DatabaseModel dbModel) {
+		databaseModel = dbModel;
+		
 		int opt;
 		do {
 			opt = takimModelMenu();
@@ -34,6 +35,7 @@ public class TakimModule {
 	}
 	
 	private static void takimModelMenuOpsiyonlari(int opt) {
+		TakimDB takimDB = databaseModel.takimDB;
 		switch (opt) {
 			case 1: {
 				System.out.println("Lütfen bir takım ismi giriniz: ");
@@ -85,6 +87,7 @@ public class TakimModule {
 	}
 	
 	private static void takimDetayMenuSecenekleri(int opt, List<Takim> takimList) {
+		FutbolcuDB futbolcuDB = databaseModel.futbolcuDB;
 		switch (opt) {
 			case 1: {
 				if (takimList.size() == 1) {

@@ -4,21 +4,21 @@ import uygulamalar.FutbolApp.Databases.FutbolcuDB;
 import uygulamalar.FutbolApp.Databases.LigDB;
 import uygulamalar.FutbolApp.Databases.MenajerDB;
 import uygulamalar.FutbolApp.Databases.TakimDB;
-import uygulamalar.FutbolApp.entities.Futbolcu;
-import uygulamalar.FutbolApp.entities.Lig;
-import uygulamalar.FutbolApp.entities.Menajer;
-import uygulamalar.FutbolApp.entities.Takim;
+import uygulamalar.FutbolApp.entities.*;
+import uygulamalar.FutbolApp.model.DatabaseModel;
 
 import java.io.*;
 import java.util.List;
 
 public class FileIOReader {
-	private static final File dosya =new File("C:\\FutbolAppDatabase");
 	
-	public static void futbolcuDosyasiniOku(FutbolcuDB futbolcuDB){
-		File inputFile = new File(dosya,"futbolcuDB.bin");
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(inputFile))) {
-			futbolcuDB.saveAll((List<Futbolcu>) ois.readObject());
+	private static final File dosya =new File("C:\\FutbolAPPDatabase");
+	
+	public static void futbolcuDosyasiniOku(DatabaseModel databaseModel){
+		
+		try(ObjectInputStream ois=
+				    new ObjectInputStream(new FileInputStream("C:\\FutbolAPPDatabase\\futbolcuDB.bin"))) {
+			databaseModel.futbolcuDB.saveAll((List<Futbolcu>) ois.readObject());
 		}
 		
 		catch (IOException | ClassNotFoundException e) {
@@ -26,20 +26,10 @@ public class FileIOReader {
 		}
 	}
 	
-	public static void takimDosyasiniOku(TakimDB takimDB){
-		File inputFile= new File(dosya,"takimDB.bin");
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(inputFile))) {
-			takimDB.saveAll((List<Takim>) ois.readObject());
-		}
-		catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void ligDosyasiniOku(LigDB ligDB){
-		File inputFile= new File(dosya,"ligDB.bin");
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(inputFile))){
-			ligDB.saveAll((List<Lig>) ois.readObject());
+	public static void takimDosyasiniOku(DatabaseModel databaseModel){
+		File inputFile=new File(dosya,"takimDB.bin");
+		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(inputFile))) {
+			databaseModel.takimDB.saveAll((List<Takim>) ois.readObject());
 		}
 		
 		catch (IOException | ClassNotFoundException e) {
@@ -47,10 +37,10 @@ public class FileIOReader {
 		}
 	}
 	
-	public static void menajerDosyasiniOku(MenajerDB menajerDB){
-		File inputFile= new File(dosya,"menajerDB.bin");
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream(inputFile))) {
-			menajerDB.saveAll((List<Menajer>) ois.readObject());
+	public static void ligDosyasiniOku(DatabaseModel databaseModel){
+		File inputFile=new File(dosya,"ligDB.bin");
+		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(inputFile))) {
+			databaseModel.ligDB.saveAll((List<Lig>) ois.readObject());
 		}
 		
 		catch (IOException | ClassNotFoundException e) {
@@ -58,10 +48,45 @@ public class FileIOReader {
 		}
 	}
 	
-	public static void nesneleriOku(FutbolcuDB futbolcuDB,TakimDB takimDB,LigDB ligDB,MenajerDB menajerDB){
-		futbolcuDosyasiniOku(futbolcuDB);
-		takimDosyasiniOku(takimDB);
-		ligDosyasiniOku(ligDB);
-		menajerDosyasiniOku(menajerDB);
+	public static void menajerDosyasiniOku(DatabaseModel databaseModel){
+		File inputFile=new File(dosya,"menajerDB.bin");
+		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(inputFile))) {
+			databaseModel.menajerDB.saveAll((List<Menajer>) ois.readObject());
+		}
+		
+		catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//	public static void fiksturDosyasiniOku(FiksturGeneratorDB fiksturGeneratorDB){
+//		File inputFile=new File(dosya,"fiksturDB.bin");
+//		try (ObjectInputStream ois =new ObjectInputStream(new FileInputStream(inputFile))){
+//			fiksturGeneratorDB.saveAll((List<FiksturGenerator>) ois.readObject());
+//		}
+//
+//		catch (IOException | ClassNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//	}
+	public static void stadyumDosyasiniOku(DatabaseModel databaseModel){
+		File inputFile=new File(dosya,"stadyumDB.bin");
+		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(inputFile))) {
+			databaseModel.stadyumDB.saveAll((List<Stadyum>) ois.readObject());
+		}
+		
+		catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void nesneleriOku(DatabaseModel databaseModel){
+		futbolcuDosyasiniOku(databaseModel);
+		takimDosyasiniOku(databaseModel);
+		ligDosyasiniOku(databaseModel);
+		menajerDosyasiniOku(databaseModel);
+		stadyumDosyasiniOku(databaseModel);
+		
 	}
 }

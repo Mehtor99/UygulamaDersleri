@@ -1,30 +1,35 @@
 package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.MenajerDB;
+import uygulamalar.FutbolApp.model.DatabaseModel;
 import uygulamalar.FutbolApp.utilities.FileIOWriter;
 
 import java.time.LocalDate;
 
 public class Menajer extends BaseEntity {
-	static int manajerIDCount;
+	static int manajerIDCount=0;
+	private  static DatabaseModel databaseModel= DatabaseModel.getInstance();
 	
 	private String isim;
 	private String soyIsim;
-	//private long sozlesmeBedeli;  byraya sonradan sozlesme entitysi gelecek
-	private LocalDate dogumTarihi;
-	private Integer takimId=-1;
 	private String sifre;
+	//	private long sozlesmeBedeli;  buraya sonradan sözleþme entitysi gelicek
+	private LocalDate dogumTarihi;
+	private int takimID;
 	
-	public Menajer(LocalDate dogumTarihi, String isim, String soyIsim,String sifre, int takimId, MenajerDB menajerDB) {
+	
+	public Menajer(LocalDate dogumTarihi, String isim, String soyIsim,String sifre, int takimID, MenajerDB menajerDB) {
 		this.dogumTarihi = dogumTarihi;
 		this.isim = isim;
 		this.soyIsim = soyIsim;
-		this.sifre = sifre;
-		this.takimId = takimId;
-		this.id = ++manajerIDCount;
+		this.takimID = takimID;
+		this.sifre=sifre;
+		this.id=++manajerIDCount;
 		menajerDB.save(this);
-		FileIOWriter.menajerleriDosyayaYazdir(menajerDB);
+		FileIOWriter.menajerleriDosyayaYazdir(databaseModel);
+		
 	}
+	
 	
 	public String getSifre() {
 		return sifre;
@@ -58,14 +63,6 @@ public class Menajer extends BaseEntity {
 		this.soyIsim = soyIsim;
 	}
 	
-	public Integer getTakimId() {
-		return takimId;
-	}
-	
-	public void setTakimId(Integer takimId) {
-		this.takimId = takimId;
-	}
-	
 	public LocalDate getDogumTarihi() {
 		return dogumTarihi;
 	}
@@ -74,8 +71,16 @@ public class Menajer extends BaseEntity {
 		this.dogumTarihi = dogumTarihi;
 	}
 	
+	public int getTakimID() {
+		return takimID;
+	}
+	
+	public void setTakimID(int takimID) {
+		this.takimID = takimID;
+	}
+	
 	@Override
 	public String toString() {
-		return "Menajer{" + "isim='" + getIsim() + '\'' + ", soyIsim='" + getSoyIsim() + '\'' + ", dogumTarihi=" + getDogumTarihi() + ", takimId=" + getTakimId() + ", sifre='" + getSifre() + '\'' + ", id=" + getId() + '}';
+		return "Menajer{" + "dogumTarihi=" + getDogumTarihi() + ", isim='" + getIsim() + '\'' + ", sifre='" + getSifre() + '\'' + ", soyIsim='" + getSoyIsim() + '\'' + ", takimID=" + getTakimID() + ", id=" + getId() + '}';
 	}
 }

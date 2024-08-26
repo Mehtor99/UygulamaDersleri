@@ -13,67 +13,32 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class TakimDB extends DatabaseManager<Takim> {
+	private static final TakimDB instance = new TakimDB();
 	
-	//ismi girilenn takýmý getirme
-	public Optional<Takim> takimiIsmiyleBul(String takimIsmi){
-		return veriListesi.stream()
-				.filter(takim ->takim.getTakimIsim().equalsIgnoreCase(takimIsmi))
-				.findFirst();
+	private TakimDB() {}
+	
+	public static TakimDB getInstance() {
+		return instance;
 	}
+
 	
-	//takýmýn tüm müsakalarýný getirme  ???? hocaya soracaðýz.
-	/*public List<Musabaka> musabakalariBul(Takim takim){
-		return veriListesi.stream()
-				.filter(takim1->takim1.getTakimIsmi().equalsIgnoreCase(takim.getTakimIsmi()))
-	}*/
-	
-	public List<Takim> renklereGoreTakimBul(ERenkler renkler){
-		return veriListesi.stream()
-				.filter(takim ->takim.getRenkler().equals(renkler))
-				.collect(Collectors.toList());
-	}
-	
-	public List<Takim>  girilenMetniIcerenleriListele(String kulupIsmi){
-		List<Takim> bulunanList = veriListesi.stream()
-		                  .filter(takim -> takim.getTakimIsim().toLowerCase().contains(kulupIsmi.toLowerCase()))
-		                  .toList();
+	public List<Takim> girilenMetniIcerenleriListele(String kulupIsmi) {
+		List<Takim> bulunanList = veriListesi.stream().filter(takim -> takim.getTakimIsim().toLowerCase()
+		                                                                    .contains(kulupIsmi.toLowerCase()))
+		                                     .toList();
 		bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim());
-//		System.out.println("------- Aranan takim "+ kulupIsmi + " -------");
-//		if (bulunanList.isEmpty()){
-//			System.out.println("Takim Bulunamadi!!");
-//
-//		}
-//		else{
-//			bulunanList.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim())
-//			           .forEach(System.out::println);
-//		}
-//		System.out.println("-----------------------------------");
+		
 		return bulunanList;
 	}
 	
-	public List<Takim> renklereGoreTakimBul2(ERenkler renkler){
-		List<Takim> takimRenkleri=new ArrayList<>();
-		for (Takim takim:veriListesi){
-			if (takim.getRenkler().equals(renkler)){
-				takimRenkleri.add(takim);
-			}
-		}
-		return takimRenkleri;
-		
-	}
-	
 	public void takimlarIsimIdList() {
-		 veriListesi.stream()
-				.map(takim -> takim.getId() + " : " + takim.getTakimIsim())
-				.collect(Collectors.toList())
-				.forEach(System.out::println);
+		veriListesi.stream().map(takim -> takim.getId() + " : " + takim.getTakimIsim()).collect(Collectors.toList())
+		           .forEach(System.out::println);
 	}
 	
-	public void menajerinTakimIdsineGoreTakimBul(Integer takimId) {
-		Optional<Takim> bulunanTakim = veriListesi.stream()
-		                .filter(takim -> takim.getId() == takimId).findFirst();
-		System.out.println(bulunanTakim.get());
+	public void menajerinTakimIdsineGoreTakimBul(int takimid) {
+		Optional<Takim> bulunantakim = veriListesi.stream().filter(takim -> takim.getId() == takimid).findFirst();
+		System.out.println(bulunantakim.get());
 	}
-	
 	
 }

@@ -8,16 +8,13 @@ import java.util.stream.Collectors;
 
 public class LigDB extends DatabaseManager<Lig> {
 	
-	public Optional<Lig>  ligIsmiBul(String ligIsmi){
-		return veriListesi.stream()
-				.filter(lig -> lig.getLigIsmi().equalsIgnoreCase(ligIsmi))
-				.findFirst();
+	private static final LigDB instance = new LigDB();
+	
+	private LigDB() {
 	}
-	//bütün ligleri listeleme
-	public void ligleriListele(){
-		 veriListesi.stream()
-				.collect(Collectors.toList())
-				.forEach(System.out::println);
+	
+	public static LigDB getInstance() {
+		return instance;
 	}
 	
 }

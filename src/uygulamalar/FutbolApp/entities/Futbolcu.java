@@ -1,6 +1,7 @@
 package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.FutbolcuDB;
+import uygulamalar.FutbolApp.model.DatabaseModel;
 import uygulamalar.FutbolApp.utilities.FileIOWriter;
 import uygulamalar.FutbolApp.utilities.enums.EMevki;
 
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 
 public class Futbolcu extends BaseEntity{
 	static int futbolcuIdCount=0;
+	private  static DatabaseModel databaseModel= DatabaseModel.getInstance();
 	
 	private String isim;
 	private String soyIsim;
@@ -25,13 +27,13 @@ public class Futbolcu extends BaseEntity{
 		this.mevki = mevki;
 		this.id=++futbolcuIdCount;
 		futbolcuDB.save(this);
-		FileIOWriter.futbolculariDosyayaYazdir(futbolcuDB);
+		FileIOWriter.futbolculariDosyayaYazdir(databaseModel);
 	}
 	
 	public Futbolcu(FutbolcuDB futbolcuDB) {
 		futbolcuDB.save(this);
 		this.id=++futbolcuIdCount;
-		FileIOWriter.futbolculariDosyayaYazdir(futbolcuDB);
+		FileIOWriter.futbolculariDosyayaYazdir(databaseModel);
 	}
 	
 	public static int getFutbolcuIdCount() {

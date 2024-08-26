@@ -1,34 +1,51 @@
 package uygulamalar.FutbolApp.entities;
 
 import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.model.DatabaseModel;
 import uygulamalar.FutbolApp.utilities.FileIOWriter;
 import uygulamalar.FutbolApp.utilities.enums.ERenkler;
 
 public class Takim extends BaseEntity {
 	static int takimIdCount = 0;
+	private  static DatabaseModel databaseModel=DatabaseModel.getInstance();
 	
+	private Integer stadyumID;
 	private String takimIsim;
 	private String baskanIsmi;
 	private String kurulusTarihi;
 	private ERenkler renkler;
 	
 	
-	
-	public Takim(String takimIsim, ERenkler renkler, String baskanIsmi, String kurulusTarihi,TakimDB takimDB) {
+	public Takim(String takimIsim,Integer stadyumID, ERenkler renkler, String baskanIsmi, String kurulusTarihi,TakimDB takimDB) {
 		this.takimIsim = takimIsim;
+		this.stadyumID=stadyumID;
 		this.renkler = renkler;
 		this.baskanIsmi = baskanIsmi;
 		this.kurulusTarihi = kurulusTarihi;
-		this.id =++takimIdCount;
+		this.id=++takimIdCount;
 		takimDB.save(this);
-		FileIOWriter.takimlariDosyayaYazdir(takimDB);
+		FileIOWriter.takimlariDosyayaYazdir(databaseModel);
 	}
 	
+	public Takim(String takimIsim,TakimDB takimDB) {
+		this.takimIsim = takimIsim;
+		this.id=++takimIdCount;
+		takimDB.save(this);
+		
+	}
 	
 	public Takim(TakimDB takimDB) {
 		this.id=++takimIdCount;
 		takimDB.save(this);
-		FileIOWriter.takimlariDosyayaYazdir(takimDB);
+		FileIOWriter.takimlariDosyayaYazdir(databaseModel);
+	}
+	
+	public Integer getStadyumID() {
+		return stadyumID;
+	}
+	
+	public void setStadyumID(Integer stadyumID) {
+		this.stadyumID = stadyumID;
 	}
 	
 	public static int getTakimIdCount() {
@@ -76,6 +93,6 @@ public class Takim extends BaseEntity {
 	
 	@Override
 	public String toString() {
-		return "Takim{" + "takimIsim='" + getTakimIsim() + '\'' + ", baskanIsmi='" + getBaskanIsmi() + '\'' +'\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' +", renkler=" + getRenkler() + ", id=" + getId() + '}';
+		return "Takim{" + "baskanIsmi='" + getBaskanIsmi() + '\'' + ", stadyumID=" + getStadyumID() + ", takimIsim='" + getTakimIsim() + '\'' + ", kurulusTarihi='" + getKurulusTarihi() + '\'' + ", renkler=" + getRenkler() + ", id=" + getId() + '}';
 	}
 }
