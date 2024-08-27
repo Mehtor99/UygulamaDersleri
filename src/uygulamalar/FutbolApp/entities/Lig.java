@@ -25,33 +25,6 @@ public class Lig extends BaseEntity {
 	private LocalDate baslangicTarihi;
 	
 	
-	
-	public Lig(LigDB ligDB) {
-		this.id=++ligIDCount;
-		takimIDList=new ArrayList<>();
-		ligDB.save(this);
-		FileIOWriter.ligleriDosyayaYazdir(databaseModel);
-		
-	}
-	
-	public Lig(String ligIsmi, List<Integer> takimIDList,LigDB ligDB,LocalDate baslangicTarihi) {
-		this.ligIsmi = ligIsmi;
-		this.takimIDList = takimIDList;
-		this.id=++ligIDCount;
-		this.baslangicTarihi=baslangicTarihi;
-		takimIDList=new ArrayList<>();
-		ligDB.save(this);
-		FileIOWriter.ligleriDosyayaYazdir(databaseModel);
-	}
-	
-	public Lig(String ligIsmi, LigDB ligDB) {
-		this.ligIsmi = ligIsmi;
-		takimIDList=new ArrayList<>();
-		this.id=++ligIDCount;
-		ligDB.save(this);
-		FileIOWriter.ligleriDosyayaYazdir(databaseModel);
-	}
-	
 	public Lig(String ligIsmi, String sezon, EKume kume, EBolge bolge, LigDB ligDB,LocalDate baslangicTarihi) {
 		this.ligIsmi = ligIsmi;
 		this.sezon = sezon;

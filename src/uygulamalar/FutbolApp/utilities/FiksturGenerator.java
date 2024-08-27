@@ -1,6 +1,7 @@
 package uygulamalar.FutbolApp.utilities;
 
 import uygulamalar.FutbolApp.Databases.TakimDB;
+import uygulamalar.FutbolApp.entities.Istatistik;
 import uygulamalar.FutbolApp.entities.Musabaka;
 
 import java.time.DayOfWeek;
@@ -13,13 +14,20 @@ public class FiksturGenerator {
 	private static Map<Integer, List<Musabaka>> fikstur = new HashMap<>();
 	private LocalDate sezonBaslangic;
 	private Map<Integer, String> takimIDtoIsim;
-	private Map<Integer, Integer> puanTablosu = new HashMap<>();
+	private Map<Integer, Istatistik> takimIstatistikleri = new HashMap<>();
 	
 	public FiksturGenerator(List<Integer> takimIDleri, LocalDate sezonBaslangic, Map<Integer, String> takimIDtoIsim) {
 		this.takimIDleri = takimIDleri;
 		this.sezonBaslangic = sezonBaslangic;
 		this.takimIDtoIsim = takimIDtoIsim;
 		this.gunler = Arrays.asList(DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY, DayOfWeek.MONDAY);
+		initializeIstatistikler();
+	}
+	
+	private void initializeIstatistikler() {
+		for (Integer takimID : takimIDleri) {
+			takimIstatistikleri.put(takimID, new Istatistik());
+		}
 	}
 	
 	public void generateFikstur() {
@@ -30,8 +38,6 @@ public class FiksturGenerator {
 			takimIDleri.add(-1); // "BAY" için -1 kullanarak iþaretleyelim
 			takimSayisi++;
 		}
-		
-		List<Integer> originalTakimlar = new ArrayList<>(takimIDleri);
 		
 		// Ýlk yarý
 		for (int hafta = 0; hafta < takimSayisi - 1; hafta++) {
@@ -80,9 +86,9 @@ public class FiksturGenerator {
 			fikstur.put(hafta + takimSayisi, musabakalar);
 			takimIDleri.add(1, takimIDleri.remove(takimIDleri.size() - 1));
 		}
-		
 		gunleriAta();
-		puanTablosunuGuncelle();
+		
+		
 	}
 	
 	private void gunleriAta() {
@@ -103,34 +109,49 @@ public class FiksturGenerator {
 		Random random = new Random();
 		for (List<Musabaka> musabakalar : fikstur.values()) {
 			for (Musabaka musabaka : musabakalar) {
-				int sonuc = random.nextInt(3); // 0 = ev sahibi galibiyeti, 1 = misafir takým galibiyeti, 2 = beraberlik
+				int evSahibiGol = random.nextInt(5);
+				int misafirTakimGol = random.nextInt(5);
+				
 				Integer evSahibi = musabaka.getEvSahibiID();
 				Integer misafirTakim = musabaka.getMisafirTakimID();
 				
-				switch (sonuc) {
-					case 0:
-						puanTablosu.put(evSahibi, puanTablosu.getOrDefault(evSahibi, 0) + 3);
-						break;
-					case 1:
-						puanTablosu.put(misafirTakim, puanTablosu.getOrDefault(misafirTakim, 0) + 3);
-						break;
-					case 2:
-						puanTablosu.put(evSahibi, puanTablosu.getOrDefault(evSahibi, 0) + 1);
-						puanTablosu.put(misafirTakim, puanTablosu.getOrDefault(misafirTakim, 0) + 1);
-						break;
+				if (evSahibiGol > misafirTakimGol) {
+					takimIstatistikleri.get(evSahibi).galibiyetEkle();
+					takimIstatistikleri.get(misafirTakim).maglubiyetEkle();
+				} else if (misafirTakimGol > evSahibiGol) {
+					takimIstatistikleri.get(misafirTakim).galibiyetEkle();
+					takimIstatistikleri.get(evSahibi).maglubiyetEkle();
+				} else {
+					takimIstatistikleri.get(evSahibi).beraberlikEkle();
+					takimIstatistikleri.get(misafirTakim).beraberlikEkle();
 				}
+				
+				takimIstatistikleri.get(evSahibi).golEkle(evSahibiGol, misafirTakimGol);
+				takimIstatistikleri.get(misafirTakim).golEkle(misafirTakimGol, evSahibiGol);
 			}
 		}
 	}
 	
 	public void puanTablosunuYazdir() {
 		System.out.println("Puan Tablosu:");
-		puanTablosu.entrySet().stream()
-		           .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
-		           .forEach(entry -> {
-			           String takimIsmi = takimIDtoIsim.get(entry.getKey());
-			           System.out.println(takimIsmi + ": " + entry.getValue() + " puan");
-		           });
+		System.out.printf("%-20s %-3s %-3s %-3s %-3s %-3s %-3s %-3s%n",
+		                  "Takým Ýsmi", "G", "B", "M", "AG", "YG", "AV", "Puan");
+		
+		takimIstatistikleri.entrySet().stream()
+		                   .sorted((e1, e2) -> Integer.compare(e2.getValue().getPuan(), e1.getValue().getPuan()))
+		                   .forEach(entry -> {
+			                   String takimIsmi = takimIDtoIsim.get(entry.getKey());
+			                   Istatistik istatistik = entry.getValue();
+			                   System.out.printf("%-20s %-3d %-3d %-3d %-3d %-3d %-3d %-3d%n",
+			                                     takimIsmi,
+			                                     istatistik.getGalibiyet(),
+			                                     istatistik.getBeraberlik(),
+			                                     istatistik.getMaglubiyet(),
+			                                     istatistik.getAtilanGol(),
+			                                     istatistik.getYenilenGol(),
+			                                     istatistik.getAveraj(),
+			                                     istatistik.getPuan());
+		                   });
 	}
 	
 	public void fiksturuYazdir() {
@@ -143,5 +164,6 @@ public class FiksturGenerator {
 			}
 			System.out.println();
 		}
+		
 	}
 }

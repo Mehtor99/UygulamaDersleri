@@ -26,7 +26,7 @@ public class LigModel {
 	private EBolge bolge;
 	private LocalDate baslangicTarihi;
 	private Map<Integer, List<MusabakaModel>> fikstur = new HashMap<>();
-	private Map<Integer,Integer> puanTablosu;
+	
 	//puan
 	
 	public LigModel(Lig lig, List<Takim> takimlar,DatabaseModel databaseModel) {
@@ -38,7 +38,7 @@ public class LigModel {
 		this.sezon = lig.getSezon();
 		this.takimlar = takimlar;
 		this.databaseModel=databaseModel;
-		puanTablosu=new HashMap<>();
+		
 	}
 	
 	public LigModel(DatabaseModel databaseModel) {
@@ -138,36 +138,6 @@ public class LigModel {
 				                                        takimIdToNameMap);
 		fiksturGenerator.generateFikstur();
 		fiksturGenerator.fiksturuYazdir();
-	}
-	
-	public void macSonucuIsle(Istatistik evsahibiIstatistik, Istatistik misafirIstatistik, int evsahibiGol,
-	                          int misafirGol){
-		
-		evsahibiIstatistik.setAtilanGol(evsahibiIstatistik.getAtilanGol()+evsahibiGol);
-		misafirIstatistik.setAtilanGol(misafirIstatistik.getAtilanGol()+misafirGol);
-		
-		if (evsahibiGol>misafirGol){
-			
-			evsahibiIstatistik.setGalibiyet(evsahibiIstatistik.getGalibiyet()+1);
-			misafirIstatistik.setMaglubiyet(misafirIstatistik.getMaglubiyet()+1);
-		}
-		else if (evsahibiGol<misafirGol) {
-			misafirIstatistik.setGalibiyet(misafirIstatistik.getGalibiyet()+1);
-			evsahibiIstatistik.setMaglubiyet(evsahibiIstatistik.getMaglubiyet()+1);
-		}else{
-			evsahibiIstatistik.setBeraberlik(evsahibiIstatistik.getBeraberlik()+1);
-			misafirIstatistik.setBeraberlik(misafirIstatistik.getBeraberlik()+1);
-		}
-		databaseModel.istatistikDB.update(evsahibiIstatistik);
-		databaseModel.istatistikDB.update(misafirIstatistik);
-		
-		puanTablosu.put(evsahibiIstatistik.getTakimID(),puanHesapla(evsahibiIstatistik));
-		puanTablosu.put(misafirIstatistik.getTakimID(),puanHesapla(misafirIstatistik));
-		
-	}
-	
-	private int puanHesapla(Istatistik istatistik){
-		return istatistik.getGalibiyet()*3+istatistik.getBeraberlik();
 	}
 	
 	

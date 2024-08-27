@@ -7,7 +7,8 @@ public class IstatistikDB extends DatabaseManager<Istatistik> {
 	
 	private  static final IstatistikDB instace=new IstatistikDB();
 	
-	private IstatistikDB(){}
+	private IstatistikDB(){
+	}
 	
 	public static IstatistikDB getInstance(){
 		return instace;

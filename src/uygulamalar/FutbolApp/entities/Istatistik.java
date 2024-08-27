@@ -3,91 +3,65 @@ package uygulamalar.FutbolApp.entities;
 public class Istatistik extends BaseEntity{
 	static int istatistikIDCount=0;
 	
-	private Integer ligID;
-	private Integer takimID;
-	private Integer galibiyet;
-	private Integer maglubiyet;
-	private Integer beraberlik;
-	private Integer atilanGol;
-	private Integer yenilenGol;
+	private int galibiyet;
+	private int beraberlik;
+	private int maglubiyet;
+	private int atilanGol;
+	private int yenilenGol;
 	
-	public Istatistik(Integer atilanGol, Integer beraberlik, Integer galibiyet, Integer ligID, Integer maglubiyet, Integer takimID, Integer yenilenGol) {
-		this.atilanGol = atilanGol;
-		this.beraberlik = beraberlik;
-		this.galibiyet = galibiyet;
-		this.ligID = ligID;
-		this.maglubiyet = maglubiyet;
-		this.takimID = takimID;
-		this.yenilenGol = yenilenGol;
+	public Istatistik() {
+		this.galibiyet = 0;
+		this.beraberlik = 0;
+		this.maglubiyet = 0;
+		this.atilanGol = 0;
+		this.yenilenGol = 0;
 		this.id = ++istatistikIDCount;
 	}
 	
-	public Integer getAtilanGol() {
-		return atilanGol;
+	
+	public int getAveraj(){
+		return atilanGol-yenilenGol;
 	}
 	
-	public void setAtilanGol(Integer atilanGol) {
-		this.atilanGol = atilanGol;
+	
+	public void galibiyetEkle() {
+		this.galibiyet++;
 	}
 	
-	public Integer getBeraberlik() {
-		return beraberlik;
+	public void beraberlikEkle() {
+		this.beraberlik++;
 	}
 	
-	public void setBeraberlik(Integer beraberlik) {
-		this.beraberlik = beraberlik;
+	public void maglubiyetEkle() {
+		this.maglubiyet++;
 	}
 	
-	public Integer getGalibiyet() {
+	public void golEkle(int atilan, int yenilen) {
+		this.atilanGol += atilan;
+		this.yenilenGol += yenilen;
+	}
+	
+	public int getGalibiyet() {
 		return galibiyet;
 	}
 	
-	public void setGalibiyet(Integer galibiyet) {
-		this.galibiyet = galibiyet;
+	public int getBeraberlik() {
+		return beraberlik;
 	}
 	
-	public static int getIstatistikID() {
-		return istatistikIDCount;
-	}
-	
-	public static void setIstatistikID(int istatistikID) {
-		Istatistik.istatistikIDCount = istatistikIDCount;
-	}
-	
-	public Integer getLigID() {
-		return ligID;
-	}
-	
-	public void setLigID(Integer ligID) {
-		this.ligID = ligID;
-	}
-	
-	public Integer getMaglubiyet() {
+	public int getMaglubiyet() {
 		return maglubiyet;
 	}
 	
-	public void setMaglubiyet(Integer maglubiyet) {
-		this.maglubiyet = maglubiyet;
+	public int getAtilanGol() {
+		return atilanGol;
 	}
 	
-	public Integer getTakimID() {
-		return takimID;
-	}
-	
-	public void setTakimID(Integer takimID) {
-		this.takimID = takimID;
-	}
-	
-	public Integer getYenilenGol() {
+	public int getYenilenGol() {
 		return yenilenGol;
 	}
 	
-	public void setYenilenGol(Integer yenilenGol) {
-		this.yenilenGol = yenilenGol;
-	}
-	
-	@Override
-	public String toString() {
-		return "Istatistik{" + "atilanGol=" + getAtilanGol() + ", ligID=" + getLigID() + ", takimID=" + getTakimID() + ", galibiyet=" + getGalibiyet() + ", maglubiyet=" + getMaglubiyet() + ", beraberlik=" + getBeraberlik() + ", yenilenGol=" + getYenilenGol() + ", id=" + getId() + '}';
+	public int getPuan() {
+		return (galibiyet * 3) + (beraberlik * 1);
 	}
 }

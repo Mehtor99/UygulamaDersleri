@@ -4,14 +4,14 @@ import uygulamalar.FutbolApp.Databases.FutbolcuDB;
 import uygulamalar.FutbolApp.Databases.LigDB;
 import uygulamalar.FutbolApp.Databases.StadyumDB;
 import uygulamalar.FutbolApp.Databases.TakimDB;
-import uygulamalar.FutbolApp.entities.Lig;
-import uygulamalar.FutbolApp.entities.Musabaka;
-import uygulamalar.FutbolApp.entities.Stadyum;
-import uygulamalar.FutbolApp.entities.Takim;
+import uygulamalar.FutbolApp.entities.*;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MusabakaModel {
+	private static DatabaseModel databaseModel;
 	private static TakimDB takimDB;
 	private static LigDB ligDB;
 	private static FutbolcuDB futbolcuDB;
@@ -25,6 +25,7 @@ public class MusabakaModel {
 	private String hakemIsmi;
 	private LocalDate musabakaTarihi;
 	private Lig ligID;
+	
 	
 	public MusabakaModel(TakimDB takimDB, LigDB ligDB, FutbolcuDB futbolcuDB, StadyumDB stadyumDB, Musabaka musabaka,
 	                     Lig lig) {
@@ -41,6 +42,7 @@ public class MusabakaModel {
 		this.evSahibiSkor = musabaka.getEvSahibiSkor();
 		this.misafirTakimSkor = musabaka.getMisafirTakimSkor();
 		this.hakemIsmi = musabaka.getHakemIsmi();
+		
 		
 	}
 	
@@ -60,4 +62,7 @@ public class MusabakaModel {
 		System.out.println("Hakem Ýsmi            : " + hakemIsmi);
 		System.out.println("------------------------------------");
 	}
+	
+	
+	
 }

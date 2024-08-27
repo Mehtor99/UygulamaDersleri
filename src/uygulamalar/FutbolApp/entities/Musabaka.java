@@ -1,10 +1,12 @@
 package uygulamalar.FutbolApp.entities;
 import uygulamalar.FutbolApp.Databases.MusabakaDB;
+import uygulamalar.FutbolApp.model.DatabaseModel;
+
 import java.time.LocalDate;
 import java.util.Map;
 
 public class Musabaka extends BaseEntity {
-	static int musabakaIDCOunt = 0;
+	static int musabakaIDCount = 0;
 	
 	private Integer evSahibiID;
 	private Integer misafirTakimID;
@@ -17,31 +19,12 @@ public class Musabaka extends BaseEntity {
 	private Map<Integer, String> takimIDtoIsim;
 	
 	
-	public Musabaka(Integer evSahibiID, Integer misafirTakimID, Stadyum stadyum, int evSahibiSkor, int misafirTakimSkor
-			, String hakemIsmi, LocalDate musabakaTarihi, Integer ligID, MusabakaDB musabakaDB) {
-		this.evSahibiID = evSahibiID;
-		this.misafirTakimID = misafirTakimID;
-		this.stadyum = stadyum;
-		this.evSahibiSkor = evSahibiSkor;
-		this.misafirTakimSkor = misafirTakimSkor;
-		this.hakemIsmi = hakemIsmi;
-		this.musabakaTarihi = musabakaTarihi;
-		this.ligID = ligID;
-		musabakaDB.save(this);
-	}
-	
-	public Musabaka(Integer evSahibiID, Integer misafirTakimID) {
-		this.evSahibiID = evSahibiID;
-		this.misafirTakimID = misafirTakimID;
-	}
 	public Musabaka(Integer evSahibiID, Integer misafirTakimID, Map<Integer, String> takimIDtoIsim) {
 		this.evSahibiID = evSahibiID;
 		this.misafirTakimID = misafirTakimID;
 		this.takimIDtoIsim = takimIDtoIsim;
+		this.id = ++musabakaIDCount;
 	}
-	
-	
-	
 	
 	public Integer getEvSahibiID() {
 		return evSahibiID;
@@ -92,11 +75,11 @@ public class Musabaka extends BaseEntity {
 	}
 	
 	public static int getMusabakaIDCOunt() {
-		return musabakaIDCOunt;
+		return musabakaIDCount;
 	}
 	
 	public static void setMusabakaIDCOunt(int musabakaIDCOunt) {
-		Musabaka.musabakaIDCOunt = musabakaIDCOunt;
+		Musabaka.musabakaIDCount = musabakaIDCOunt;
 	}
 	
 	public LocalDate getMusabakaTarihi() {
